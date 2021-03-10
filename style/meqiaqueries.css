@@ -1,14 +1,14 @@
 /* smartphone style */
 @media screen and (max-width:768px) {
     .maxLength {
-        min-width:100%;
-        max-width:100%;
+        min-width: 100%;
+        max-width: 100%;
     }
-    
+
     #top {
         width: 100%;
     }
-    
+
     #top #logo {
         width: 80%;
     }
@@ -52,6 +52,10 @@
         width: 100%;
     }
 
+    #presentation h3 {
+        text-align: center;
+    }
+
     #partner {
         width: 100%;
         justify-content: space-around;
@@ -68,5 +72,9 @@
         -moz-transform: scale(1);
         -ms-transform: scale(1);
         -o-transform: scale(1);
-}
+    }
+
+    #sneakersSearchBar form{
+        width: 80%;
+    }
 }
