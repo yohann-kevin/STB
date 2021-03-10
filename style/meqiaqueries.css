@@ -77,4 +77,21 @@
     #sneakersSearchBar form{
         width: 80%;
     }
+
+    .sneakerTrend {
+        width: 45%;
+        margin-bottom: 20px;
+        border: none;
+    }
+
+    .sneakerTrend img {
+        height: 60%;
+    }
+
+    .model,
+    .price,
+    .gender,
+    .seller {
+        width: 90%;
+    }
 }

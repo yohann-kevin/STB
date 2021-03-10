@@ -397,7 +397,6 @@
     flex-wrap: wrap;
     justify-content: space-between;
     border-bottom: 2px solid var(--purple);
-    
     transition: 0.5s;
     -webkit-transition: 0.5s;
     -moz-transition: 0.5s;
