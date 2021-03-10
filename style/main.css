@@ -30,7 +30,7 @@
 
 /* header */
 
-#top { 
+#top {
     width: 100%;
     display: flex;
     justify-content: space-between;
@@ -52,6 +52,10 @@
     display: flex;
     justify-content: space-around;
     padding-top: 40px;
+}
+
+#top #burgerMenuSmartphone {
+    display: none;
 }
 
 #top i {
@@ -118,6 +122,51 @@
     padding-left: 80%;
     font-size: 2.5rem;
 }
+
+.overlay {
+    height: 100%;
+    width: 0;
+    position: fixed;
+    z-index: 1;
+    left: 0;
+    top: 0;
+    background-color: rgb(0, 0, 0);
+    background-color: rgba(0, 0, 0, 0.9);
+    overflow-x: hidden;
+    transition: 0.5s;
+}
+
+.overlay-content {
+    position: relative;
+    top: 25%;
+    width: 100%;
+    text-align: center;
+    margin-top: 30px;
+}
+
+.overlay a {
+    padding: 8px;
+    text-decoration: none;
+    font-size: 36px;
+    color: #818181;
+    display: block;
+    transition: 0.3s;
+}
+
+.overlay a:hover,
+.overlay a:focus {
+    color: #f1f1f1;
+}
+
+.overlay .closebtn {
+    position: absolute;
+    top: 20px;
+    right: 45px;
+    font-size: 60px;
+}
+
+
+
 
 
 #home {
@@ -239,7 +288,7 @@
     justify-content: space-around;
 }
 
-#sneakersSearchBar form{
+#sneakersSearchBar form {
     width: 40%;
     display: flex;
     flex-wrap: wrap;
@@ -263,11 +312,11 @@
     border-top-left-radius: 5px;
     border-bottom-left-radius: 5px;
     color: var(--purple);
-    transition:0.5s;
-    -webkit-transition:0.5s;
-    -moz-transition:0.5s;
-    -ms-transition:0.5s;
-    -o-transition:0.5s;
+    transition: 0.5s;
+    -webkit-transition: 0.5s;
+    -moz-transition: 0.5s;
+    -ms-transition: 0.5s;
+    -o-transition: 0.5s;
 }
 
 #sneakersSearchBar input::placeholder {
@@ -302,11 +351,11 @@
     color: var(--purple);
     border-top-right-radius: 5px;
     border-bottom-right-radius: 5px;
-    transition:0.5s;
-    -webkit-transition:0.5s;
-    -moz-transition:0.5s;
-    -ms-transition:0.5s;
-    -o-transition:0.5s;
+    transition: 0.5s;
+    -webkit-transition: 0.5s;
+    -moz-transition: 0.5s;
+    -ms-transition: 0.5s;
+    -o-transition: 0.5s;
 }
 
 #sneakersSearchBar button:hover {

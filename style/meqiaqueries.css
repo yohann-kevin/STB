@@ -1,0 +1,72 @@
+/* smartphone style */
+@media screen and (max-width:768px) {
+    .maxLength {
+        min-width:100%;
+        max-width:100%;
+    }
+    
+    #top {
+        width: 100%;
+    }
+    
+    #top #logo {
+        width: 80%;
+    }
+
+    #top #burgerMenu {
+        display: none;
+    }
+
+    #top img {
+        width: 100%;
+    }
+
+    #top #burgerMenuSmartphone {
+        display: block;
+        width: 10%;
+        display: flex;
+        justify-content: space-around;
+        padding-top: 40px;
+        margin-right: 20px;
+    }
+
+    .overlay a {
+        font-size: 2rem;
+    }
+
+    .overlay .closebtn {
+        font-size: 3rem;
+        top: 15px;
+        right: 35px;
+    }
+
+    .sidenav {
+        display: none;
+    }
+
+    #slider {
+        display: none;
+    }
+
+    #presentation {
+        width: 100%;
+    }
+
+    #partner {
+        width: 100%;
+        justify-content: space-around;
+    }
+
+    .partnerLogo {
+        margin-top: 20px;
+        width: 40%;
+    }
+
+    .partnerLogo:hover {
+        transform: scale(1);
+        -webkit-transform: scale(1);
+        -moz-transform: scale(1);
+        -ms-transform: scale(1);
+        -o-transform: scale(1);
+}
+}
