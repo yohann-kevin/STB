@@ -1,7 +1,7 @@
 <template>
-  <div id="sidenav" class="sidenav" v-on:click="test">
+  <div id="sidenav" class="sidenav">
     <!-- <a class="tablink" href="javascript:void(0)" id="closenav" class="closebtn">&times;</a> -->
-    <a class="tablink" href="javascript:void(0)" id="closenav">&times;</a>
+    <a class="tablink" href="javascript:void(0)" id="closenav" v-on:click="closeNav">&times;</a>
     <a class="tablink" href="#home">Home</a>
     <a class="tablink" href="#comparator">Comparator</a>
     <a class="tablink" href="#trend">Trend</a>
@@ -13,21 +13,18 @@
 <script>
 export default {
   name: 'Nav',
-  props: {
-    navOpen: Boolean
-  },
   methods: {
-    test : function() {
-
+    closeNav: function () {
+      this.$emit("navIsClose");
     }
-  }
+  },
 }
 </script>
 
 <style scoped>
 .sidenav {
   height: 100%;
-  width: 20px;
+  width: 0;
   position: fixed;
   z-index: 1;
   top: 0;

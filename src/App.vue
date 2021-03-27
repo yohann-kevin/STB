@@ -1,10 +1,7 @@
 <template>
   <div id="app">
-    <!-- <img alt="Vue logo" src="./assets/logo.png"> -->
-    <!-- <HelloWorld msg="Welcome to Your Vue.js App"/> -->
-    <Header v-bind:navOpen="false">
-      <Nav/>
-    </Header>
+    <Header v-on:navIsOpen="eventNav('250px')"/>
+    <Nav v-on:navIsClose="eventNav('0')"/>
   </div>
 </template>
 
@@ -14,18 +11,17 @@ import Nav from './components/Nav.vue'
 
 export default {
   name: 'App',
+  navOpen: false,
   components: {
     Header,
     Nav
   },
-  // watch:{
-  //   sidebar: function (openNav,element,container) {
-  //     if (openNav == true) {
-  //       element.style.width = "250px";
-  //       container.style.marginRight = "250px";
-  //     }
-  //   }
-  // }
+  methods: {
+    eventNav: function (value) {
+      document.getElementById("app").style.marginRight = value;
+      document.getElementById("sidenav").style.width = value;
+    }
+  }
 }
 </script>
 
@@ -34,9 +30,11 @@ export default {
   font-family: Avenir, Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  /* text-align: center;
-  color: #2c3e50;
-  margin-top: 60px; */
+  transition: margin-right .5s;
+  -webkit-transition: margin-right .5s;
+  -moz-transition: margin-right .5s;
+  -ms-transition: margin-right .5s;
+  -o-transition: margin-right .5s;
 }
 :root {
   --white: #ffffff;
@@ -52,14 +50,6 @@ export default {
   padding: 0;
   /* font-family: 'robotoregular'; */
 }
-
-/* #body {
-  transition: margin-right .5s;
-  -webkit-transition: margin-right .5s;
-  -moz-transition: margin-right .5s;
-  -ms-transition: margin-right .5s;
-  -o-transition: margin-right .5s;
-} */
 
 .maxLength {
   max-width: 1200px;
