@@ -2,19 +2,22 @@
   <div id="app">
     <Header v-on:navIsOpen="eventNav('250px')"/>
     <Nav v-on:navIsClose="eventNav('0')"/>
+    <Carousel/>
   </div>
 </template>
 
 <script>
 import Header from './components/Header.vue'
 import Nav from './components/Nav.vue'
+import Carousel from './components/Carousel.vue'
 
 export default {
   name: 'App',
   navOpen: false,
   components: {
     Header,
-    Nav
+    Nav,
+    Carousel
   },
   methods: {
     eventNav: function (value) {
