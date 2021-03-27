@@ -4,7 +4,7 @@
       <img src="../assets/SneakeTaMère.png" alt="Sneake ta mère">
     </div>
     <div id="burgerMenu">
-      <font-awesome-icon icon="bars" id="navOpening"/>
+      <font-awesome-icon icon="bars" id="navOpening" v-on:click="openNav()"/>
     </div>
     <div id="burgerMenuSmartphone">
       <font-awesome-icon icon="bars" id="navOpening"/>
@@ -16,26 +16,14 @@
 export default {
   data () {
     return {
-      name: 'Header',
-      navOpen: false
+      name: 'Header'
     }
   },
-  
-  // props: {
-  //   navOpen: Boolean
-  // },
-  // methods: {
-  //   openNav: function () {
-  //     alert("plop")
-  //     this.navOpen = true
-  //   }
-  // }
-  // computed: {
-  //   openNav: function () {
-  //     alert("plop")
-  //     this.navOpen = true
-  //   }
-  // },
+  methods: {
+    openNav : function() {
+      this.$emit('navIsOpen');
+    }
+  }
 }
 </script>
 
