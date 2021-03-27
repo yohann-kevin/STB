@@ -28,6 +28,19 @@
         justify-content: space-around;
         padding-top: 40px;
         margin-right: 20px;
+        position: fixed;
+        right: 30px;
+        top: 5px;
+    }
+
+    #top #burgerMenuSmartphone i {
+        background-color: var(--purple);
+        padding: 2px 4px;
+        border-radius: 5px;
+        -webkit-border-radius: 5px;
+        -moz-border-radius: 5px;
+        -ms-border-radius: 5px;
+        -o-border-radius: 5px;
     }
 
     .overlay a {
@@ -63,7 +76,7 @@
 
     .partnerLogo {
         margin-top: 20px;
-        width: 40%;
+        width: 35%;
     }
 
     .partnerLogo:hover {
@@ -79,7 +92,7 @@
     }
 
     .sneakerTrend {
-        width: 45%;
+        width: 40%;
         margin-bottom: 20px;
         border: none;
     }
