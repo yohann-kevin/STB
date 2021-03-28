@@ -1,7 +1,6 @@
 <template>
   <div id="sidenav" class="sidenav">
-    <!-- <a class="tablink" href="javascript:void(0)" id="closenav" class="closebtn">&times;</a> -->
-    <a class="tablink" href="javascript:void(0)" id="closenav" v-on:click="closeNav">&times;</a>
+    <a class="tablink" id="closenav" v-on:click="closeNav">&times;</a>
     <a class="tablink" href="#home">Home</a>
     <a class="tablink" href="#comparator">Comparator</a>
     <a class="tablink" href="#trend">Trend</a>

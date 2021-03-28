@@ -1,7 +1,8 @@
 <template>
   <div id="app">
-    <Header v-on:navIsOpen="eventNav('250px')"/>
-    <Nav v-on:navIsClose="eventNav('0')"/>
+    <Header v-on:navIsOpen="navEvent(false,'250px')" v-on:navSmartIsOpen="navEvent(true,'100%')"/>
+    <Nav v-on:navIsClose="navEvent(false,'0')"/>
+    <SmartNav v-on:navSmartIsClose="navEvent(true,'0')"/>
     <Carousel/>
   </div>
 </template>
@@ -10,6 +11,7 @@
 import Header from './components/Header.vue'
 import Nav from './components/Nav.vue'
 import Carousel from './components/Carousel.vue'
+import SmartNav from './components/SmartNav.vue'
 
 export default {
   name: 'App',
@@ -17,18 +19,29 @@ export default {
   components: {
     Header,
     Nav,
-    Carousel
+    Carousel,
+    SmartNav
   },
   methods: {
-    eventNav: function (value) {
-      document.getElementById("app").style.marginRight = value;
-      document.getElementById("sidenav").style.width = value;
+    navEvent: function (isSmart,value) {
+      if (!isSmart) {
+        document.getElementById("app").style.marginRight = value;
+        document.getElementById("sidenav").style.width = value;
+      } else {
+        document.getElementById("smartphoneNav").style.width = value
+      }
     }
   }
 }
 </script>
 
 <style>
+* {
+  margin: 0;
+  padding: 0;
+  /* font-family: 'robotoregular'; */
+}
+
 #app {
   font-family: Avenir, Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
@@ -46,12 +59,6 @@ export default {
   --black: #000000;
   --gray: #72726e;
   --transparent-black: rgba(0, 0, 0, 0.5);
-}
-
-* {
-  margin: 0;
-  padding: 0;
-  /* font-family: 'robotoregular'; */
 }
 
 .maxLength {
