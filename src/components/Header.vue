@@ -1,7 +1,7 @@
 <template>
   <div id="top">
     <div id="logo">
-      <img src="../assets/SneakeTaMère.png" alt="Sneake ta mère">
+      <img src="../assets/logo/sneake-toi-bien.png" alt="Sneake ta mère">
     </div>
     <div id="burgerMenu">
       <font-awesome-icon icon="bars" id="navOpening" v-on:click="openNav()"/>
