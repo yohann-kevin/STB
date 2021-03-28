@@ -7,7 +7,7 @@
       <font-awesome-icon icon="bars" id="navOpening" v-on:click="openNav()"/>
     </div>
     <div id="burgerMenuSmartphone">
-      <font-awesome-icon icon="bars" id="navOpening"/>
+      <font-awesome-icon icon="bars" id="navOpening" v-on:click="openNavSmart()"/>
     </div>
   </div>
 </template>
@@ -22,6 +22,9 @@ export default {
   methods: {
     openNav : function() {
       this.$emit('navIsOpen');
+    },
+    openNavSmart : function () {
+      this.$emit('navSmartIsOpen');
     }
   }
 }
