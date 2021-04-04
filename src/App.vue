@@ -10,17 +10,16 @@
 <script>
 import Header from './components/Header.vue'
 import Nav from './components/Nav.vue'
-import Carousel from './components/Carousel.vue'
 import SmartNav from './components/SmartNav.vue'
+import Carousel from './components/Carousel.vue'
 
 export default {
   name: 'App',
-  navOpen: false,
   components: {
     Header,
     Nav,
-    Carousel,
-    SmartNav
+    SmartNav,
+    Carousel
   },
   methods: {
     navEvent: function (isSmart,value) {
@@ -36,14 +35,19 @@ export default {
 </script>
 
 <style>
+@font-face {
+  font-family: 'robotoregular';
+  src: url('./assets/fonts/roboto/roboto-regular-webfont.woff2') format('woff2'),
+       url('./assets/fonts/roboto/roboto-regular-webfont.woff') format('woff');
+}
+
 * {
   margin: 0;
   padding: 0;
-  /* font-family: 'robotoregular'; */
 }
 
 #app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
+  font-family: 'robotoregular';
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   transition: margin-right .5s;
