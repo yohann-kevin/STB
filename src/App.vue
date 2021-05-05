@@ -11,6 +11,7 @@
     <Trend/>
     <About/>
     <Contact/>
+    <Footer/>
   </div>
 </template>
 
@@ -24,6 +25,7 @@ import Comparator from './components/Comparator.vue'
 import Trend from './components/Trend.vue'
 import About from './components/About.vue'
 import Contact from './components/Contact.vue'
+import Footer from './components/Footer.vue'
 
 export default {
   name: 'App',
@@ -36,7 +38,8 @@ export default {
     Comparator,
     Trend,
     About,
-    Contact
+    Contact,
+    Footer
   },
   methods: {
     navEvent: function (isSmart,value) {
