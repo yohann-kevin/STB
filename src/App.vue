@@ -1,8 +1,8 @@
 <template>
-  <div id="app">
+  <div id="app" ref="app">
     <Header v-on:navIsOpen="navEvent(false,'250px')" v-on:navSmartIsOpen="navEvent(true,'100%')"/>
-    <Nav v-on:navIsClose="navEvent(false,'0')"/>
-    <SmartNav v-on:navSmartIsClose="navEvent(true,'0')"/>
+    <Nav v-on:navIsClose="navEvent(false,'0')" ref="nav"/>
+    <SmartNav v-on:navSmartIsClose="navEvent(true,'0')" ref="smartnav"/>
     <Carousel/>
   </div>
 </template>
@@ -24,10 +24,10 @@ export default {
   methods: {
     navEvent: function (isSmart,value) {
       if (!isSmart) {
-        document.getElementById("app").style.marginRight = value;
-        document.getElementById("sidenav").style.width = value;
+        this.$refs.app.style.marginRight = value;
+        this.$refs.nav.$refs.sidenav.style.width = value;
       } else {
-        document.getElementById("smartphoneNav").style.width = value
+        this.$refs.smartnav.$refs.smartphoneNav.style.width = value;
       }
     }
   }
