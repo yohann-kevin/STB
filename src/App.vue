@@ -7,6 +7,7 @@
       <Carousel/>
       <HomeContent/>
     </div>
+    <Comparator/>
   </div>
 </template>
 
@@ -16,6 +17,7 @@ import Nav from './components/Nav.vue'
 import SmartNav from './components/SmartNav.vue'
 import Carousel from './components/Carousel.vue'
 import HomeContent from './components/HomeContent.vue'
+import Comparator from './components/Comparator.vue'
 
 export default {
   name: 'App',
@@ -24,7 +26,8 @@ export default {
     Nav,
     SmartNav,
     Carousel,
-    HomeContent
+    HomeContent,
+    Comparator
   },
   methods: {
     navEvent: function (isSmart,value) {
