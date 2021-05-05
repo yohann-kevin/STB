@@ -7,7 +7,7 @@
       <form action="#" method="post">
         <label for="searchSneakers">Entrer un modèle de sneakers : </label>
         <input type="text" placeholder="Rechercher..." name="searchSneakers">
-        <button type="submit"><i class="fa fa-search"></i></button>
+        <button type="submit"><font-awesome-icon icon="search"/></button>
       </form>
     </div>
   </div>  
@@ -80,13 +80,19 @@ export default {
 
 #sneakersSearchBar input:focus {
   outline: none;
-  background-color: var(--gray);
+  background-color: var(--purple);
   color: var(--white);
+  border-bottom: 1px solid var(--white);
+  border-top-left-radius: 0;
+  border-bottom-left-radius: 0;
 }
 
 #sneakersSearchBar input:hover {
-  background-color: var(--gray);
+  background-color: var(--purple);
   color: var(--white);
+  border-bottom: 1px solid var(--white);
+  border-top-left-radius: 0;
+  border-bottom-left-radius: 0;
 }
 
 #sneakersSearchBar input:hover::placeholder {
@@ -114,13 +120,19 @@ export default {
 }
 
 #sneakersSearchBar button:hover {
-  background-color: var(--gray);
+  background-color: var(--purple);
   color: var(--white);
   cursor: pointer;
+  border-bottom: 1px solid var(--white);
+  border-top-right-radius: 0;
+  border-bottom-right-radius: 0;
 }
 
 #sneakersSearchBar button:focus {
   outline: none;
+  border-bottom: 1px solid var(--white);
+  border-top-right-radius: 0;
+  border-bottom-right-radius: 0;
 }
 
 @media screen and (max-width:768px) {
