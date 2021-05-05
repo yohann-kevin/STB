@@ -41,4 +41,10 @@ export default {
   -ms-transition: 1s;
   -o-transition: 1s;
 }
+
+@media screen and (max-width:768px) {
+  #slider {
+    display: none;
+  }
+}
 </style>

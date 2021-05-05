@@ -1,5 +1,5 @@
 <template>
-  <div id="sidenav" class="sidenav">
+  <div id="sidenav" class="sidenav" ref="sidenav">
     <a class="tablink" id="closenav" v-on:click="closeNav">&times;</a>
     <a class="tablink" href="#home">Home</a>
     <a class="tablink" href="#comparator">Comparator</a>

@@ -1,5 +1,5 @@
 <template>
-  <div id="smartphoneNav" class="overlay">
+  <div id="smartphoneNav" class="overlay" ref="smartphoneNav">
     <a class="closebtn" id="closenavSmartphone" v-on:click="closeNavSmart()">&times;</a>
     <div class="overlay-content">
       <a href="#home">Home</a>
