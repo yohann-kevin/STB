@@ -9,6 +9,8 @@
     </div>
     <Comparator/>
     <Trend/>
+    <About/>
+    <Contact/>
   </div>
 </template>
 
@@ -20,6 +22,8 @@ import Carousel from './components/Carousel.vue'
 import HomeContent from './components/HomeContent.vue'
 import Comparator from './components/Comparator.vue'
 import Trend from './components/Trend.vue'
+import About from './components/About.vue'
+import Contact from './components/Contact.vue'
 
 export default {
   name: 'App',
@@ -30,7 +34,9 @@ export default {
     Carousel,
     HomeContent,
     Comparator,
-    Trend
+    Trend,
+    About,
+    Contact
   },
   methods: {
     navEvent: function (isSmart,value) {
