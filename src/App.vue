@@ -3,7 +3,10 @@
     <Header v-on:navIsOpen="navEvent(false,'250px')" v-on:navSmartIsOpen="navEvent(true,'100%')"/>
     <Nav v-on:navIsClose="navEvent(false,'0')" ref="nav"/>
     <SmartNav v-on:navSmartIsClose="navEvent(true,'0')" ref="smartnav"/>
-    <Carousel/>
+    <div id="home">
+      <Carousel/>
+      <HomeContent/>
+    </div>
   </div>
 </template>
 
@@ -12,6 +15,7 @@ import Header from './components/Header.vue'
 import Nav from './components/Nav.vue'
 import SmartNav from './components/SmartNav.vue'
 import Carousel from './components/Carousel.vue'
+import HomeContent from './components/HomeContent.vue'
 
 export default {
   name: 'App',
@@ -19,7 +23,8 @@ export default {
     Header,
     Nav,
     SmartNav,
-    Carousel
+    Carousel,
+    HomeContent
   },
   methods: {
     navEvent: function (isSmart,value) {
@@ -68,5 +73,29 @@ export default {
 .maxLength {
   max-width: 1200px;
   min-width: 1200px;
+}
+
+#home {
+  min-height: 500px;
+  background-color: var(--white);
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+}
+
+#home .slide {
+  width: 100%;
+  transition: 1s;
+  -webkit-transition: 1s;
+  -moz-transition: 1s;
+  -ms-transition: 1s;
+  -o-transition: 1s;
+}
+
+@media screen and (max-width:768px) {
+  .maxLength {
+    min-width: 100%;
+    max-width: 100%;
+  }
 }
 </style>
