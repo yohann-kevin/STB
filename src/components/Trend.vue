@@ -4,36 +4,12 @@
       <h2>Tendance</h2>
     </div>
     <div id="lastTrend" class="maxLength">
-      <article class="sneakerTrend">
-        <img src="../assets/sneakers/adidas-ozweego-celox.webp">
-        <p class="model">Adidas Ozweego Celox</p>
-        <p class="price">120,00 €</p>
-        <p class="gender">Mixte</p>
-        <p class="seller">Disponible sur <span class="sellerSite">Courir</span></p>
-      </article>
-
-      <article class="sneakerTrend">
-        <img src="../assets/sneakers/air-jordan-one.webp">
-        <p class="model">Jordan Air One</p>
-        <p class="price">130,00 €</p>
-        <p class="gender">Homme</p>
-        <p class="seller">Disponible sur <span class="sellerSite">Courir</span></p>
-      </article>
-
-      <article class="sneakerTrend">
-        <img src="../assets/sneakers/new-balance-327.png">
-        <p class="model">New Balance 327</p>
-        <p class="price">90,00 €</p>
-        <p class="gender">Femme</p>
-        <p class="seller">Disponible sur <span class="sellerSite">Courir</span></p>
-      </article>
-
-      <article class="sneakerTrend">
-        <img src="../assets/sneakers/puma-mirage-tech.webp">
-        <p class="model">Puma Mirage Tech</p>
-        <p class="price">100,00 €</p>
-        <p class="gender">Homme</p>
-        <p class="seller">Disponible sur <span class="sellerSite">Courir</span></p>
+      <article class="sneakerTrend" v-for="(sneaker, i) in sneakers" :key="i">
+        <img :src="sneaker.imgPath" />
+        <p class="model">{{ sneaker.model }}</p>
+        <p class="price">{{ sneaker.price }}</p>
+        <p class="gender">{{ sneaker.gender }}</p>
+        <p class="seller">Disponible sur <span class="sellerSite">{{ sneaker.sellerName }}</span></p>
       </article>
     </div>
   </div>
@@ -41,7 +17,40 @@
 
 <script>
 export default {
-  
+  data() {
+    return {
+      sneakers: [
+        {
+          imgPath: require("@/assets/sneakers/adidas-ozweego-celox.webp"),
+          model: "Adidas Ozweego Celox",
+          price: "120,00 €",
+          gender: "Mixte",
+          sellerName: "courir"
+        },
+        {
+          imgPath: require("@/assets/sneakers/air-jordan-one.webp"),
+          model: "Jordan Air One",
+          price: "130,00 €",
+          gender: "Homme",
+          sellerName: "courir"
+        },
+        {
+          imgPath: require("@/assets/sneakers/new-balance-327.png"),
+          model: "New Balance 327",
+          price: "90,00 €",
+          gender: "Femme",
+          sellerName: "courir"
+        },
+        {
+          imgPath: require("@/assets/sneakers/puma-mirage-tech.webp"),
+          model: "Puma Mirage Tech",
+          price: "100,00 €",
+          gender: "Homme",
+          sellerName: "courir"
+        }
+      ]
+    }
+  }
 }
 </script>
 
