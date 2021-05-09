@@ -5,11 +5,11 @@
     </div>
     <div id="lastTrend" class="maxLength">
       <article class="sneakerTrend" v-for="(sneaker, i) in sneakers" :key="i">
-        <img :src="sneaker.imgPath" />
+        <img :src="sneaker.image_path" />
         <p class="model">{{ sneaker.model }}</p>
         <p class="price">{{ sneaker.price }}</p>
         <p class="gender">{{ sneaker.gender }}</p>
-        <p class="seller">Disponible sur <span class="sellerSite">{{ sneaker.sellerName }}</span></p>
+        <p class="seller">Disponible sur <span class="sellerSite">{{ sneaker.seller_name }}</span></p>
       </article>
     </div>
   </div>
@@ -20,36 +20,48 @@ export default {
   data() {
     return {
       sneakers: [
-        {
-          imgPath: require("@/assets/sneakers/adidas-ozweego-celox.webp"),
-          model: "Adidas Ozweego Celox",
-          price: "120,00 €",
-          gender: "Mixte",
-          sellerName: "courir"
-        },
-        {
-          imgPath: require("@/assets/sneakers/air-jordan-one.webp"),
-          model: "Jordan Air One",
-          price: "130,00 €",
-          gender: "Homme",
-          sellerName: "courir"
-        },
-        {
-          imgPath: require("@/assets/sneakers/new-balance-327.png"),
-          model: "New Balance 327",
-          price: "90,00 €",
-          gender: "Femme",
-          sellerName: "courir"
-        },
-        {
-          imgPath: require("@/assets/sneakers/puma-mirage-tech.webp"),
-          model: "Puma Mirage Tech",
-          price: "100,00 €",
-          gender: "Homme",
-          sellerName: "courir"
-        }
+        // {
+        //   imgPath: require("@/assets/sneakers/adidas-ozweego-celox.webp"),
+        //   model: "Adidas Ozweego Celox",
+        //   price: "120,00 €",
+        //   gender: "Mixte",
+        //   sellerName: "courir"
+        // },
+        // {
+        //   imgPath: require("@/assets/sneakers/air-jordan-one.webp"),
+        //   model: "Jordan Air One",
+        //   price: "130,00 €",
+        //   gender: "Homme",
+        //   sellerName: "courir"
+        // },
+        // {
+        //   imgPath: require("@/assets/sneakers/new-balance-327.png"),
+        //   model: "New Balance 327",
+        //   price: "90,00 €",
+        //   gender: "Femme",
+        //   sellerName: "courir"
+        // },
+        // {
+        //   imgPath: require("@/assets/sneakers/puma-mirage-tech.webp"),
+        //   model: "Puma Mirage Tech",
+        //   price: "100,00 €",
+        //   gender: "Homme",
+        //   sellerName: "courir"
+        // }
       ]
     }
+  },
+  methods: {
+    findData: function() {
+      this.$axios.get("http://localhost:3000/trend").then(response => this.manageData(response));
+    },
+    manageData: function(response) {
+      console.log(response.data);
+      this.sneakers = response.data;
+    }
+  },
+  mounted() {
+    this.findData();
   }
 }
 </script>
