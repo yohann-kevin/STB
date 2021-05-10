@@ -7,12 +7,13 @@
         </div>
         <div class="login-content">
           <label>Name : </label>
-          <input type="text" name="name" placeholder="Name" required/>
+          <input type="text" name="name" placeholder="Name" ref="name"/>
           <label>Password : </label>
-          <input type="password" name="pass" placeholder="Password" required/>
+          <span ref="passmsg"></span>
+          <input type="password" name="pass" placeholder="Password" ref="pass"/>
           <div class="login-button">
-            <button type="submit">Se connecter</button>
-            <button type="reset">Annuler</button>
+            <button type="submit" v-on:click="buildRequest()">Se connecter</button>
+            <!-- <button type="reset">Annuler</button> -->
           </div>
         </div>
       </div>
@@ -22,9 +23,28 @@
 
 <script>
 export default {
+  data() {
+    return {
+      reg: new RegExp("(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.{8,})")
+    }
+  },
   methods: {
     closeModal: function() {
       this.$refs.loginModal.style.display = "none";
+    },
+    buildRequest: function() {
+      this.checkValue(this.$refs.name.value, this.$refs.pass.value);
+    },
+    checkValue: function(name, pass) {
+      let request = name + "&" + pass;
+      this.reg.test(pass) ? this.connectAdmin(request) : this.manageErrorFormat();
+    },
+    connectAdmin: function(request) {
+      console.log(request);
+    },
+    manageErrorFormat: function() {
+      this.$refs.passmsg.textContent = "Invalid password !";
+      this.$refs.passmsg.style.color = "red";
     }
   }
 }
