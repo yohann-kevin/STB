@@ -7,6 +7,7 @@
         </div>
         <div class="login-content">
           <label>Name : </label>
+          <span ref="namemsg"></span>
           <input type="text" name="name" placeholder="Name" ref="name"/>
           <label>Password : </label>
           <span ref="passmsg"></span>
@@ -41,10 +42,30 @@ export default {
     },
     connectAdmin: function(request) {
       console.log(request);
+      console.log("http://localhost:3000/login/kirua&Kercode4", request)
+      request = "http://localhost:3000/login/" + request;
+      this.$axios.get(request).then(response => this.manageResponse(response));
     },
     manageErrorFormat: function() {
       this.$refs.passmsg.textContent = "Invalid password !";
       this.$refs.passmsg.style.color = "red";
+    },
+    manageResponse: function(response) {
+      console.log(response.data.response);
+      if (response.data.response.is_users) {
+        console.log("connect");
+      } else {
+        if (response.data.response.name) this.errorName();
+        if (response.data.response.pass) this.errorPass();
+      }
+    },
+    errorName: function() {
+      this.$refs.namemsg.textContent = "Unknown name !";
+      this.$refs.namemsg.style.color = "red";
+    },
+    errorPass: function() {
+      this.$refs.passmsg.textContent = "Unknown password !";
+      this.$refs.passmsg.style.color = "red";      
     }
   }
 }
