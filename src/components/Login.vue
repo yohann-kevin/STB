@@ -7,9 +7,13 @@
         </div>
         <div class="login-content">
           <label>Name : </label>
-          <input type="text" name="name" required/>
+          <input type="text" name="name" placeholder="Name" required/>
           <label>Password : </label>
-          <input type="password" name="pass" required/>
+          <input type="password" name="pass" placeholder="Password" required/>
+          <div class="login-button">
+            <button type="submit">Se connecter</button>
+            <button type="reset">Annuler</button>
+          </div>
         </div>
       </div>
     </div>
@@ -28,13 +32,13 @@ export default {
 
 <style>
 .modal {
-  display: none; 
+  display: none;
   position: fixed;
-  z-index: 1; 
+  z-index: 1;
   left: 0;
   top: 0;
-  width: 100%; 
-  height: 100%; 
+  width: 100%;
+  height: 100%;
   overflow: auto; 
   background-color: rgb(0,0,0);
   background-color: rgba(0,0,0,0.4);
@@ -48,7 +52,7 @@ export default {
   background-color: var(--purple);
   color: var(--white);
   margin: 15% auto;
-  padding: 10px;
+  padding: 25px;
   width: 20%;
 }
 
@@ -93,7 +97,6 @@ export default {
 
 .login-content {
   width: 100%;
-  /* min-height: 25vh; */
   display: flex;
   justify-content: center;
   flex-wrap: wrap;
@@ -107,7 +110,27 @@ export default {
 }
 
 .login-content input {
-  /* font-size: 1.1rem; */
+  width: 100%;
   padding: 5px;
+  border: none;
+}
+
+.login-button {
+  width: 100%;
+  display: flex;
+  justify-content: space-around;
+  flex-wrap: wrap;
+}
+
+.login-button button {
+  width: 100%;
+  margin: 5px 0;
+  height: 25px;
+  color: var(--purple);
+  border: none;
+}
+
+.login-button button:hover {
+  cursor: pointer;
 }
 </style>
