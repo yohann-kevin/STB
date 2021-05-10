@@ -1,8 +1,8 @@
 <template>
-  <div id="slider">
-    <img class="slide" src="../assets/carousel/adidas-share.jpg" alt="adidas share 2021">
-    <img class="slide" src="../assets/carousel/nike-loops.jpg" alt="nike loops 2021">
-    <img class="slide" src="../assets/carousel/newbalance-327.jpg" alt="newbalance 327">
+  <div>
+    <div id="slider" v-for="image in images" :key="image">
+      <img class="slide" :src="image">
+    </div>
   </div>
 </template>
 
@@ -11,22 +11,41 @@ export default {
   data () {
     return {
       name: 'Carousel',
-      index: 0
+      index: 0,
+      images: []
     }
   },
-  mounted: function mounted() {
+  beforeMount() {
+    console.log("plop mounted")
+    this.findImg();
+  },
+  mounted() {
     this.slider();
   },
   methods: {
-    slider : function () {  
+    slider : function () {
       let x = document.getElementsByClassName("slide");
       for (let i = 0; i < x.length; i++) {
+        try {
           x[i].style.display = "none";
+        } catch(err) {
+          console.log(err);
+        }
       }
       this.index++;
       if (this.index > x.length) this.index = 1;
-      x[this.index - 1].style.display = "block";
+      try {
+        x[this.index - 1].style.display = "block";
+      } catch(err) {
+        console.log(err);
+      }
       setTimeout(this.slider, 3000);
+    },
+    findImg: function() {
+      this.$axios.get("https://scrapysneake.herokuapp.com/advert").then(response => this.manageData(response));
+    },
+    manageData: function(response) {
+      this.images = response.data.image_path;
     }
   },
 }
