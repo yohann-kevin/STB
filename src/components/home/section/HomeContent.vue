@@ -13,12 +13,12 @@
           est nobis unde recusandae quia eveniet dolorem. Nemo nesciunt quam velit repellat?</p>
     </div>
     <div id="partner">
-      <img class="partnerLogo" src="../assets/partners/boutiqueofficiel.png" alt="La boutique officielle">
-      <img class="partnerLogo" src="../assets/partners/adidas.png" alt="adidas">
-      <img class="partnerLogo" src="../assets/partners/courir.png" alt="courir">
-      <img class="partnerLogo" src="../assets/partners/fila.png" alt="fila">
-      <img class="partnerLogo" src="../assets/partners/nike.png" alt="nike">
-      <img class="partnerLogo" src="../assets/partners/reebok.png" alt="reebok">
+      <img class="partnerLogo" src="../../../assets/partners/boutiqueofficiel.png" alt="La boutique officielle">
+      <img class="partnerLogo" src="../../../assets/partners/adidas.png" alt="adidas">
+      <img class="partnerLogo" src="../../../assets/partners/courir.png" alt="courir">
+      <img class="partnerLogo" src="../../../assets/partners/fila.png" alt="fila">
+      <img class="partnerLogo" src="../../../assets/partners/nike.png" alt="nike">
+      <img class="partnerLogo" src="../../../assets/partners/reebok.png" alt="reebok">
     </div>
   </div>
 </template>

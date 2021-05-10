@@ -3,14 +3,9 @@
     <Header v-on:navIsOpen="navEvent(false,'250px')" v-on:navSmartIsOpen="navEvent(true,'100%')"/>
     <Nav v-on:navIsClose="navEvent(false,'0')" ref="nav"/>
     <SmartNav v-on:navSmartIsClose="navEvent(true,'0')" ref="smartnav"/>
-    <div id="home">
-      <Carousel/>
-      <HomeContent/>
-    </div>
-    <Comparator/>
-    <Trend/>
-    <About/>
-    <Contact/>
+    <router-link to="/">Home</router-link>
+    <router-link to="admin">Admin</router-link>
+    <router-view></router-view>
     <Footer v-on:openLog="openAdminLog()"/>
     <Login ref="logAdmin"/>
   </div>
@@ -20,12 +15,6 @@
 import Header from './components/Header.vue'
 import Nav from './components/Nav.vue'
 import SmartNav from './components/SmartNav.vue'
-import Carousel from './components/Carousel.vue'
-import HomeContent from './components/HomeContent.vue'
-import Comparator from './components/Comparator.vue'
-import Trend from './components/Trend.vue'
-import About from './components/About.vue'
-import Contact from './components/Contact.vue'
 import Footer from './components/Footer.vue'
 import Login from './components/Login.vue'
 
@@ -35,12 +24,6 @@ export default {
     Header,
     Nav,
     SmartNav,
-    Carousel,
-    HomeContent,
-    Comparator,
-    Trend,
-    About,
-    Contact,
     Footer,
     Login
   },

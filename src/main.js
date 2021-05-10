@@ -7,6 +7,8 @@ import { faBars } from '@fortawesome/free-solid-svg-icons'
 import { faSearch } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
 // import router from './router'
+import Home from './components/home/Home.vue'
+import Index from './components/admin/Index.vue'
 
 Vue.use(VueRouter)
 
@@ -18,7 +20,8 @@ Vue.config.productionTip = false
 
 Vue.prototype.$axios = axios
 const routes = [
-  // { path: '/foo', component: Foo },
+  { path: "/", component: Home },
+  { path: "/admin", component: Index }
   // { path: '/bar', component: Bar }
 ]
 
