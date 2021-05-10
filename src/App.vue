@@ -11,7 +11,8 @@
     <Trend/>
     <About/>
     <Contact/>
-    <Footer/>
+    <Footer v-on:openLog="openAdminLog()"/>
+    <Login ref="logAdmin"/>
   </div>
 </template>
 
@@ -26,6 +27,7 @@ import Trend from './components/Trend.vue'
 import About from './components/About.vue'
 import Contact from './components/Contact.vue'
 import Footer from './components/Footer.vue'
+import Login from './components/Login.vue'
 
 export default {
   name: 'App',
@@ -39,7 +41,8 @@ export default {
     Trend,
     About,
     Contact,
-    Footer
+    Footer,
+    Login
   },
   methods: {
     navEvent: function (isSmart,value) {
@@ -49,6 +52,9 @@ export default {
       } else {
         this.$refs.smartnav.$refs.smartphoneNav.style.width = value;
       }
+    },
+    openAdminLog: function() {
+      this.$refs.logAdmin.$refs.loginModal.style.display = "block";
     }
   }
 }
