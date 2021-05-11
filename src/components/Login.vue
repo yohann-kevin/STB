@@ -26,7 +26,8 @@
 export default {
   data() {
     return {
-      reg: new RegExp("(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.{8,})")
+      reg: new RegExp("(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.{8,})"),
+      request: null
     }
   },
   methods: {
@@ -37,13 +38,13 @@ export default {
       this.checkValue(this.$refs.name.value, this.$refs.pass.value);
     },
     checkValue: function(name, pass) {
-      let request = name + "&" + pass;
-      this.reg.test(pass) ? this.connectAdmin(request) : this.manageErrorFormat();
+      this.request = name + "&" + pass;
+      this.reg.test(pass) ? this.connectAdmin() : this.manageErrorFormat();
     },
-    connectAdmin: function(request) {
-      console.log(request);
-      console.log("http://localhost:3000/login/kirua&Kercode4", request)
-      request = "http://localhost:3000/login/" + request;
+    connectAdmin: function() {
+      // console.log(request);
+      // console.log("http://localhost:3000/login/kirua&Kercode4", request)
+      let request = "http://localhost:3000/login/" + this.request;
       this.$axios.get(request).then(response => this.manageResponse(response));
     },
     manageErrorFormat: function() {
@@ -53,7 +54,7 @@ export default {
     manageResponse: function(response) {
       console.log(response.data.response);
       if (response.data.response.is_users) {
-        this.$router.push("admin/" + response.data.response.is_users);
+        this.$router.push("admin/" + this.request);
         this.$refs.loginModal.style.display = "none";
       } else {
         if (response.data.response.name) this.errorName();

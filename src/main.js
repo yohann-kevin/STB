@@ -30,9 +30,10 @@ const routes = [
     name: "IndexAdmin",
     component: Index,
     beforeEnter(to, from, next) {
-      let isAdmin = (to.params.isAdmin == "true")
-      if (from.name != "Home" && !isAdmin) next({path: "/"})
-      else next()
+      let isAdmin = (to.params.isAdmin === "kirua&Kercode4")
+      console.log(isAdmin)
+      if (from.name == "Home" && isAdmin) next()
+      else next({path: "/"})
     }
   }
 ]
