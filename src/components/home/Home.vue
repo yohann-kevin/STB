@@ -21,6 +21,7 @@ import About from './section/About.vue'
 import Contact from './section/Contact.vue'
 
 export default {
+  name: "Home",
   components: {
     Carousel,
     HomeContent,

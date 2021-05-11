@@ -20,14 +20,24 @@ Vue.config.productionTip = false
 
 Vue.prototype.$axios = axios
 const routes = [
-  { path: "/", component: Home },
-  { path: "/admin", component: Index }
-  // { path: '/bar', component: Bar }
+  { 
+    path: "/", 
+    name: "Home",
+    component: Home 
+  },
+  { 
+    path: "/admin/:isAdmin",
+    name: "IndexAdmin",
+    component: Index,
+    beforeEnter(to, from, next) {
+      let isAdmin = (to.params.isAdmin == "true")
+      if (from.name != "Home" && !isAdmin) next({path: "/"})
+      else next()
+    }
+  }
 ]
 
-const router = new VueRouter({
-  routes // short for `routes: routes`
-})
+const router = new VueRouter({ routes })
 
 new Vue({
   router,

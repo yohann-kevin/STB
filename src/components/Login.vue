@@ -53,7 +53,7 @@ export default {
     manageResponse: function(response) {
       console.log(response.data.response);
       if (response.data.response.is_users) {
-        this.$router.push("admin");
+        this.$router.push("admin/" + response.data.response.is_users);
         this.$refs.loginModal.style.display = "none";
       } else {
         if (response.data.response.name) this.errorName();
