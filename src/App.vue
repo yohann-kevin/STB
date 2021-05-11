@@ -3,8 +3,8 @@
     <Header v-on:navIsOpen="navEvent(false,'250px')" v-on:navSmartIsOpen="navEvent(true,'100%')"/>
     <Nav v-on:navIsClose="navEvent(false,'0')" ref="nav"/>
     <SmartNav v-on:navSmartIsClose="navEvent(true,'0')" ref="smartnav"/>
-    <router-link to="/">Home</router-link>
-    <router-link to="admin">Admin</router-link>
+    <!-- <router-link to="/">Home</router-link>
+    <router-link to="admin">Admin</router-link> -->
     <router-view></router-view>
     <Footer v-on:openLog="openAdminLog()"/>
     <Login ref="logAdmin"/>
