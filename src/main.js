@@ -6,9 +6,12 @@ import { library } from '@fortawesome/fontawesome-svg-core'
 import { faBars } from '@fortawesome/free-solid-svg-icons'
 import { faSearch } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
+// import {findAdmin} from './admin'
 // import router from './router'
 import Home from './components/home/Home.vue'
 import Index from './components/admin/Index.vue'
+
+// const adm = findAdmin();
 
 Vue.use(VueRouter)
 
@@ -30,6 +33,7 @@ const routes = [
     name: "IndexAdmin",
     component: Index,
     beforeEnter(to, from, next) {
+      // console.log(findAdmin());
       let isAdmin = (to.params.isAdmin === "kirua&Kercode4")
       console.log(isAdmin)
       if (from.name == "Home" && isAdmin) next()
