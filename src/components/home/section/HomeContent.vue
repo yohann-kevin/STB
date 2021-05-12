@@ -13,19 +13,29 @@
           est nobis unde recusandae quia eveniet dolorem. Nemo nesciunt quam velit repellat?</p>
     </div>
     <div id="partner">
-      <img class="partnerLogo" src="../../../assets/partners/boutiqueofficiel.png" alt="La boutique officielle">
-      <img class="partnerLogo" src="../../../assets/partners/adidas.png" alt="adidas">
-      <img class="partnerLogo" src="../../../assets/partners/courir.png" alt="courir">
-      <img class="partnerLogo" src="../../../assets/partners/fila.png" alt="fila">
-      <img class="partnerLogo" src="../../../assets/partners/nike.png" alt="nike">
-      <img class="partnerLogo" src="../../../assets/partners/reebok.png" alt="reebok">
+      <img class="partnerLogo" v-for="(partner, i) in partners" :key="i" :src="partner.image_path" :alt="partner.name">
     </div>
   </div>
 </template>
 
 <script>
 export default {
-  
+  data() {
+    return {
+      partners: []
+    }
+  },
+  mounted() {
+    this.findPartners()
+  },
+  methods: {
+    findPartners: function() {
+      this.$axios.get("http://localhost:3000/partner/get").then(response => this.manageResponse(response))
+    },
+    manageResponse: function(response) {
+      this.partners = response.data;
+    }
+  }
 }
 </script>
 
