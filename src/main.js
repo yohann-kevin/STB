@@ -1,17 +1,24 @@
 import Vue from 'vue'
-import App from './App.vue'
 import axios from 'axios'
 import VueRouter from 'vue-router'
+
+// font awesome library
+import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
 import { library } from '@fortawesome/fontawesome-svg-core'
 import { faBars } from '@fortawesome/free-solid-svg-icons'
 import { faSearch } from '@fortawesome/free-solid-svg-icons'
-import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
+
+// test
 // import {findAdmin} from './admin'
 // import router from './router'
+
+// components
+import App from './App.vue'
 import Home from './components/home/Home.vue'
 import Index from './components/admin/Index.vue'
 
-// const adm = findAdmin();
+// error components
+import Error404 from './components/error/404.vue'
 
 Vue.use(VueRouter)
 
@@ -29,11 +36,6 @@ const routes = [
     component: Home 
   },
   {
-    path: "/admin",
-    name: "NoAdmin",
-    component: Home
-  },
-  {
     path: "/admin/:isAdmin",
     name: "IndexAdmin",
     component: Index,
@@ -43,7 +45,12 @@ const routes = [
       else next({path: "/"});
       
     }
-  }
+  },
+  {
+    path: "*",
+    name: "Error404",
+    component: Error404
+  },
 ]
 
 const router = new VueRouter({ routes })
