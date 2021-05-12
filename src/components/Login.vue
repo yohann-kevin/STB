@@ -43,8 +43,8 @@ export default {
     },
     connectAdmin: function() {
       // console.log(request);
-      // console.log("http://localhost:3000/login/kirua&Kercode4", request)
-      let request = "http://localhost:3000/login/" + this.request;
+      // let request = "http://localhost:3000/login/" + this.request;
+      let request = "https://scrapysneake.herokuapp.com/login/" + this.request;
       this.$axios.get(request).then(response => this.manageResponse(response));
     },
     manageErrorFormat: function() {

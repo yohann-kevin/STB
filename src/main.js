@@ -28,16 +28,20 @@ const routes = [
     name: "Home",
     component: Home 
   },
-  { 
+  {
+    path: "/admin",
+    name: "NoAdmin",
+    component: Home
+  },
+  {
     path: "/admin/:isAdmin",
     name: "IndexAdmin",
     component: Index,
     beforeEnter(to, from, next) {
-      // console.log(findAdmin());
-      let isAdmin = (to.params.isAdmin === "kirua&Kercode4")
-      console.log(isAdmin)
-      if (from.name == "Home" && isAdmin) next()
-      else next({path: "/"})
+      let isAdmin = (to.params.isAdmin === "kirua&Kercode4");
+      if (from.name == "Home" && isAdmin) next();
+      else next({path: "/"});
+      
     }
   }
 ]
