@@ -11,4 +11,7 @@ export default {
 </script>
 
 <style>
+.params {
+  min-height: 80vh;
+}
 </style>

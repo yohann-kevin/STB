@@ -11,4 +11,7 @@ export default {
 </script>
 
 <style>
+.add-partners {
+  min-height: 80vh;
+}
 </style>

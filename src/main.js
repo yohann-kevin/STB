@@ -18,6 +18,7 @@ import Home from './components/home/Home.vue'
 import Index from './components/admin/Index.vue'
 
 // components admin
+import Stats from './components/admin/page/Stats.vue'
 import Advert from './components/admin/page/Advert.vue'
 import Partners from './components/admin/page/Partners.vue'
 import Scraper from './components/admin/page/Scraper.vue'
@@ -63,6 +64,10 @@ const routes = [
       isAdmin ? next() : next({path: "/"});
     },
     children: [
+      {
+        path: "/admin",
+        component: Stats
+      },
       {
         path: "/advert",
         component: Advert

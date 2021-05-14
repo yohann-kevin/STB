@@ -1,6 +1,6 @@
 <template>
-  <div class="scraper">
-    <h1>Scraper</h1>
+  <div class="show-stats">
+    <h1>Stats</h1>
   </div>
 </template>
 
@@ -11,7 +11,7 @@ export default {
 </script>
 
 <style>
-.scraper {
+.show-stats {
   min-height: 80vh;
 }
 </style>
