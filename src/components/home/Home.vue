@@ -34,5 +34,21 @@ export default {
 </script>
 
 <style>
+#home {
+  width: 100%;
+  min-height: 500px;
+  background-color: var(--white);
+  /* display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around; */
+}
 
+#home .slide {
+  width: 100%;
+  transition: 1s;
+  -webkit-transition: 1s;
+  -moz-transition: 1s;
+  -ms-transition: 1s;
+  -o-transition: 1s;
+}
 </style>
