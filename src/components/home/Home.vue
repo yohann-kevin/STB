@@ -38,9 +38,9 @@ export default {
   width: 100%;
   min-height: 500px;
   background-color: var(--white);
-  /* display: flex;
+  display: flex;
   flex-wrap: wrap;
-  justify-content: space-around; */
+  justify-content: space-around;
 }
 
 #home .slide {
