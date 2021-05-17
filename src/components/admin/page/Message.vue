@@ -1,5 +1,5 @@
 <template>
-  <div class="add-msg">
+  <div class="show-msg">
     <h1>Add Message</h1>
   </div>
 </template>
@@ -11,4 +11,7 @@ export default {
 </script>
 
 <style>
+.show-msg {
+  min-height: 80vh;
+}
 </style>

@@ -15,5 +15,7 @@ export default {
 </script>
 
 <style>
-
+.add-advert {
+  min-height: 80vh;
+}
 </style>
