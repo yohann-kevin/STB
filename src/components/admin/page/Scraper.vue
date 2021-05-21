@@ -1,5 +1,5 @@
 <template>
-  <div class="scraper">
+  <div class="scraper animate-bottom">
     <h1>Scraper</h1>
     <div class="scraper-params">
       <h2>Courir</h2>

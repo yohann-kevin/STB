@@ -1,5 +1,5 @@
 <template>
-  <div class="params">
+  <div class="params animate-bottom">
     <h1>Parameter</h1>
   </div>
 </template>

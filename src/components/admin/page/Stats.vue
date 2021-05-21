@@ -1,5 +1,5 @@
 <template>
-  <div class="show-stats">
+  <div class="show-stats animate-bottom">
     <h1>Stats</h1>
   </div>
 </template>

@@ -1,5 +1,5 @@
 <template>
-  <div class="show-msg">
+  <div class="show-msg animate-bottom">
     <h1>Add Message</h1>
   </div>
 </template>

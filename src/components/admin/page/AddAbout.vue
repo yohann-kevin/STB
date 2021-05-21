@@ -1,5 +1,5 @@
 <template>
-  <div class="add-about">
+  <div class="add-about animate-bottom">
     <h1>Add About</h1>
   </div>
 </template>
