@@ -4,14 +4,16 @@
     <div class="scraper-params">
       <h2>Courir</h2>
       <form>
-        <label class="container">Oui
-          <input type="radio" checked="checked" name="radio">
+        <div class="container">
+          <label>Oui</label>
+          <input type="radio" checked="checked" name="courir" ref="scrapCourir">
           <span class="checkmark"></span>
-        </label>
-        <label class="container">Non
-          <input type="radio" name="radio">
+        </div>
+        <div class="container">
+          <label>Non</label>
+          <input type="radio" name="courir" ref="noScrapCourir">
           <span class="checkmark"></span>
-        </label>
+        </div>
       </form>
       <button ref="btnscrap" v-on:click="scrap()">Lancer scrappy sneake :)</button>
     </div>
@@ -20,11 +22,19 @@
 
 <script>
 export default {
-  methods: {
-    scrap() {
-      console.log("plop");
+  data() {
+    return {
+      request: ""
     }
-  }
+  },
+  methods: {
+    scrap: function() {
+      if (this.checkCourir()) this.request += "&courir";
+    },
+    checkCourir: function() {
+      return this.$refs.scrapCourir.checked ? true : false;
+    }    
+  },
 }
 </script>
 
@@ -43,7 +53,7 @@ export default {
   cursor: pointer;
 }
 
-.container {
+/* .container {
   display: block;
   position: relative;
   padding-left: 35px;
@@ -97,5 +107,5 @@ export default {
   height: 8px;
   border-radius: 50%;
   background: white;
-}
+} */
 </style>
