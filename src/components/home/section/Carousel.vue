@@ -12,7 +12,8 @@ export default {
     return {
       name: 'Carousel',
       index: 0,
-      images: []
+      images: [],
+      isLoaded: false
     }
   },
   beforeMount() {
@@ -36,6 +37,10 @@ export default {
       if (this.index > x.length) this.index = 1;
       try {
         x[this.index - 1].style.display = "block";
+        if (!this.isLoaded) {
+          this.$emit("loaded");
+          this.isLoaded = true;
+        }
       } catch(err) {
         console.log(err);
       }
