@@ -12,7 +12,7 @@ export default {
 
 <style>
 .tabcontent {
-  min-height: 500px;
+  min-height: 80vh;
 }
 
 #loader {

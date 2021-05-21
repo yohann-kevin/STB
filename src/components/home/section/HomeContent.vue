@@ -1,7 +1,7 @@
 <template>
   <div class="maxLength" id="homeContent">
     <div id="homeTitle">
-      <h1>Sneake ta mère</h1>
+      <h1>Sneake toi bien</h1>
       <h2>Le comparateur de prix de sneakers entièrement gratuit</h2>
     </div>
 

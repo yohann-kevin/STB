@@ -64,6 +64,7 @@ export default {
   max-height: 30px;
   border: none;
   background-color: var(--white);
+  border-bottom: 1px solid var(--purple);
   border-top-left-radius: 5px;
   border-bottom-left-radius: 5px;
   color: var(--purple);
