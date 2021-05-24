@@ -1,21 +1,54 @@
 <template>
   <div class="scraper animate-bottom">
     <h1>Scraper</h1>
-    <div class="scraper-params">
-      <h2>Courir</h2>
+    <div class="scraper-params">      
       <form>
+        <h3>Courir : </h3>
         <div class="container">
           <label>Oui</label>
-          <input type="radio" checked="checked" name="courir" ref="scrapCourir">
-          <span class="checkmark"></span>
+          <input type="radio" name="courir" ref="scrapCourir" disabled>
         </div>
         <div class="container">
           <label>Non</label>
-          <input type="radio" name="courir" ref="noScrapCourir">
-          <span class="checkmark"></span>
+          <input type="radio" name="courir" ref="noScrapCourir" disabled>
         </div>
       </form>
-      <button ref="btnscrap" v-on:click="scrap()">Lancer scrappy sneake :)</button>
+      <form>
+        <h3>Foot Locker : </h3>
+        <div class="container">
+          <label>Oui</label>
+          <input type="radio" checked="checked" name="footlocker" ref="scrapFootlocker">
+        </div>
+        <div class="container">
+          <label>Non</label>
+          <input type="radio" name="footlocker" ref="noScrapFootlocker">
+        </div>
+      </form>
+      <form>
+        <h3>Chausport : </h3>
+        <div class="container">
+          <label>Oui</label>
+          <input type="radio" checked="checked" name="chausport" ref="scrapChausport">
+        </div>
+        <div class="container">
+          <label>Non</label>
+          <input type="radio" name="chausport" ref="noScrapChausport">
+        </div>
+      </form>
+      <form>
+        <h3>Official Shop : </h3>
+        <div class="container">
+          <label>Oui</label>
+          <input type="radio" checked="checked" name="officialshop" ref="scrapOfficialShop">
+        </div>
+        <div class="container">
+          <label>Non</label>
+          <input type="radio" name="officialshop" ref="noScrapOfficialShop">
+        </div>
+      </form>
+      <div class="container-btn">
+        <button ref="btnscrap" v-on:click="scrap()">Lancer scrappy sneake :)</button>
+      </div>
     </div>
   </div>
 </template>
@@ -24,16 +57,41 @@
 export default {
   data() {
     return {
-      request: ""
+      request: "http://localhost:3000/scrap/"
     }
   },
   methods: {
     scrap: function() {
-      if (this.checkCourir()) this.request += "&courir";
+      let counter = 0;
+      if (this.checkFootLocker()) {
+        if (counter != 0) this.request += "&";
+        this.request += "footLocker";
+        counter++;
+      }
+      if (this.checkChausport()) {
+        if (counter != 0) this.request += "&";
+        this.request += "chausport";
+        counter++;
+      }
+      if (this.checkOfficialShop()) {
+        if (counter != 0) this.request += "&";
+        this.request += "officialShop";
+        counter++;
+      }
+      console.log(this.request);
     },
     checkCourir: function() {
       return this.$refs.scrapCourir.checked ? true : false;
-    }    
+    },
+    checkFootLocker: function() {
+      return this.$refs.scrapFootlocker.checked ? true : false;
+    },
+    checkChausport: function() {
+      return this.$refs.scrapChausport.checked ? true : false;
+    },
+    checkOfficialShop: function() {
+      return this.$refs.scrapOfficialShop.checked ? true : false;
+    }
   },
 }
 </script>
@@ -53,59 +111,50 @@ export default {
   cursor: pointer;
 }
 
-/* .container {
-  display: block;
-  position: relative;
-  padding-left: 35px;
-  margin-bottom: 12px;
-  cursor: pointer;
-  font-size: 22px;
-  -webkit-user-select: none;
-  -moz-user-select: none;
-  -ms-user-select: none;
-  user-select: none;
+.scraper-params {
+  width: 100%;
+  display: flex;
+  justify-content: space-around;
+  flex-wrap: wrap;
+}
+
+.scraper-params form {
+  width: 40%;
+  text-align: center;
+  margin: 15px;
+}
+
+.container button, 
+.container input {
+  margin: 5px;
 }
 
 .container input {
-  position: absolute;
-  opacity: 0;
-  cursor: pointer;
+  background-color: red;
 }
 
-.checkmark {
-  position: absolute;
-  top: 0;
-  left: 0;
-  height: 25px;
-  width: 25px;
-  background-color: #eee;
-  border-radius: 50%;
+.container-btn {
+  width: 100%;
+  display: flex;
+  justify-content: space-around;
+  flex-wrap: wrap;
 }
 
-.container:hover input ~ .checkmark {
-  background-color: #ccc;
-}
-
-.container input:checked ~ .checkmark {
+.container-btn button {
+  font-size: 1.1rem;
+  padding: 5px;
+  border-radius: 10px;
+  border: none;
   background-color: var(--purple);
+  color: var(--white);
+  transition: 0.5s;
+  -webkit-transition: 0.5s;
+  -moz-transition: 0.5s;
+  -ms-transition: 0.5s;
+  -o-transition: 0.5s;
 }
 
-.checkmark:after {
-  content: "";
-  position: absolute;
-  display: none;
+.container-btn button:hover {
+  border-radius: 0px;
 }
-
-.container input:checked ~ .checkmark:after {
-  display: block;
-}
-
-.container .checkmark:after {
-  top: 9px;
-  left: 9px;
-  width: 8px;
-  height: 8px;
-  border-radius: 50%;
-  background: white;
-} */
 </style>
