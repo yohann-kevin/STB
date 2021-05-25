@@ -2,12 +2,12 @@
   <div class="show-stats animate-bottom">
     <h1>Stats</h1>
     <canvas id="planet-chart" style="min-height:200px;width:100%;"></canvas>
-    <canvas id="myChart" style="min-height:200px;width:100%;"></canvas>
+    <canvas id="color-chart" style="min-height:200px;width:100%;"></canvas>
   </div>
 </template>
 
 <script>
-import Chart from 'chart.js'
+import Chart from "chart.js";
 
 export default {
   data() {
@@ -80,7 +80,7 @@ export default {
   },
   methods: {
     chartLine: function() {
-      let ctx = document.getElementById('myChart').getContext('2d');
+      let ctx = document.getElementById('color-chart').getContext('2d');
       let data = this.dataBar;
       let options = this.optionsBar;
       new Chart(ctx, {
@@ -90,7 +90,7 @@ export default {
       });
     },
     chartBar: function() {
-      const ctx = document.getElementById('planet-chart');
+      let ctx = document.getElementById('planet-chart').getContext('2d');
       let data = this.dataLine;
       let options = this.optionsLine;
       new Chart(ctx, {
