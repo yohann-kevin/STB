@@ -13,15 +13,20 @@ export default {
       name: 'Carousel',
       index: 0,
       images: [],
-      isLoaded: false
+      isLoaded: false,
+      isInHome: false
     }
   },
   beforeMount() {
     console.log("plop mounted")
     this.findImg();
+    this.isInHome = true;
   },
   mounted() {
     this.slider();
+  },
+  destroyed() {
+    this.isInHome = false;
   },
   methods: {
     slider : function () {
@@ -44,7 +49,7 @@ export default {
       } catch(err) {
         console.log(err);
       }
-      setTimeout(this.slider, 3000);
+      if (this.isInHome) setTimeout(this.slider, 3000);
     },
     findImg: function() {
       this.$axios.get("https://scrapysneake.herokuapp.com/advert").then(response => this.manageData(response));
