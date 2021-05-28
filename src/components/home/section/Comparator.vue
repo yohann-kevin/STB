@@ -4,18 +4,43 @@
       <h2>Comparateur</h2>
     </div>
     <div id="sneakersSearchBar" class="maxLength">
-      <form action="#" method="post">
+      <form action="#">
         <label for="searchSneakers">Entrer un modèle de sneakers : </label>
         <input type="text" placeholder="Rechercher..." name="searchSneakers">
         <button type="submit"><font-awesome-icon icon="search"/></button>
       </form>
+    </div>
+    <div class="result maxLength">
+      <article class="sneaker-result"  v-for="(sneaker, i) in sneakers" :key="i">
+        <img :src="sneaker.image_path" />
+        <p class="model">{{ sneaker.model }}</p>
+        <p class="price">{{ sneaker.price }}</p>
+        <p class="gender">{{ sneaker.gender }}</p>
+        <p class="seller">Disponible sur <span class="sellerSite">{{ sneaker.seller_name }}</span></p>
+      </article>
     </div>
   </div>  
 </template>
 
 <script>
 export default {
-  
+  data() {
+    return {
+      sneakers: []
+    }
+  },
+  methods: {
+    findData: function() {
+      this.$axios.get("https://scrapysneake.herokuapp.com/trend").then(response => this.manageData(response));
+    },
+    manageData: function(response) {
+      console.log(response.data);
+      this.sneakers = response.data;
+    }
+  },
+  mounted() {
+    this.findData();
+  }
 }
 </script>
 
@@ -134,6 +159,66 @@ export default {
   border-bottom: 1px solid var(--white);
   border-top-right-radius: 0;
   border-bottom-right-radius: 0;
+}
+
+.result {
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  padding-bottom: 25px;
+}
+
+.sneaker-result {
+  width: 22%;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  border-bottom: 2px solid var(--gray);
+  background-color: var(--white);
+  border-radius: 10px;
+  transition: 0.5s;
+  -webkit-transition: 0.5s;
+  -moz-transition: 0.5s;
+  -ms-transition: 0.5s;
+  -o-transition: 0.5s;
+}
+
+.sneaker-result:hover {
+  /* box-shadow: 4px 4px var(--gray); */
+  transform: scale(1.1);
+  border-radius: 0;
+  -webkit-border-radius: 0;
+  -moz-border-radius: 0;
+  -ms-border-radius: 0;
+  -o-border-radius: 0;
+  cursor: pointer;
+}
+
+.sneaker-result img {
+  width: 100%;
+  height: 70%;
+  background-color: var(--gray-white);
+  border-top-right-radius: 10px;
+  border-top-left-radius: 10px;
+}
+
+.model,
+.gender {
+  padding: 5px;
+  width: 55%;
+  font-weight: bold;
+}
+
+.price,
+.seller {
+  padding: 5px;
+  width: 35%;
+}
+
+.sellerSite {
+  color: #e35205;
+  font-weight: bold;
 }
 
 @media screen and (max-width:768px) {
