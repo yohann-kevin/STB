@@ -1,8 +1,10 @@
 <template>
   <div class="show-stats animate-bottom">
     <h1>Stats</h1>
-    <canvas id="planet-chart" style="min-height:200px;width:100%;"></canvas>
-    <canvas id="color-chart" style="min-height:200px;width:100%;"></canvas>
+    <div class="data-viz">
+      <canvas ref="planetchart" id="planet-chart" class="planet-chart"></canvas>
+      <canvas ref="colorchart" id="color-chart" class="color-chart"></canvas>
+    </div>
   </div>
 </template>
 
@@ -80,7 +82,7 @@ export default {
   },
   methods: {
     chartLine: function() {
-      let ctx = document.getElementById('color-chart').getContext('2d');
+      let ctx = this.$refs.colorchart;
       let data = this.dataBar;
       let options = this.optionsBar;
       new Chart(ctx, {
@@ -90,7 +92,7 @@ export default {
       });
     },
     chartBar: function() {
-      let ctx = document.getElementById('planet-chart').getContext('2d');
+      let ctx = this.$refs.planetchart;
       let data = this.dataLine;
       let options = this.optionsLine;
       new Chart(ctx, {
@@ -111,9 +113,17 @@ export default {
 .show-stats {
   width: 100%;
   min-height: 80vh;
+  display: flex;
+  justify-content: space-around;
+  flex-wrap: wrap;
 }
 
 .show-stats h1 {
+  width: 100%;
   text-align: center;
+}
+
+.data-viz {
+  width: 80%;
 }
 </style>

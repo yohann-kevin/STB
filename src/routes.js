@@ -14,7 +14,6 @@ import Parameter from './components/admin/page/Parameter.vue'
 // error components
 import Error404 from './components/error/404.vue'
 
-
 let isAdmin = false;
 
 var routes = [
