@@ -25,7 +25,10 @@ export default {
     return {
       name: "IndexAdmin",
     }
-  }
+  },
+  mounted() {
+    this.$emit("isInAdmin");
+  },
 }
 </script>
 
