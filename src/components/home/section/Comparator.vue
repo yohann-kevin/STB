@@ -4,14 +4,14 @@
       <h2>Comparateur</h2>
     </div>
     <div id="sneakersSearchBar" class="maxLength">
-      <form action="#">
+      <div>
         <label for="searchSneakers">Entrer un modèle de sneakers : </label>
         <input type="text" placeholder="Rechercher..." name="searchSneakers">
-        <button type="submit"><font-awesome-icon icon="search"/></button>
-      </form>
+        <button v-on:click="displaySneaker()"><font-awesome-icon icon="search"/></button>
+      </div>
     </div>
-    <div class="result maxLength">
-      <article class="sneaker-result"  v-for="(sneaker, i) in sneakers" :key="i">
+    <div class="result maxLength" ref="sneakeResult">
+      <article class="sneaker-result animate-bottom"  v-for="(sneaker, i) in sneakers" :key="i" v-on:click="redirectToSeller(sellerLink)">
         <img :src="sneaker.image_path" />
         <p class="model">{{ sneaker.model }}</p>
         <p class="price">{{ sneaker.price }}</p>
@@ -26,7 +26,9 @@
 export default {
   data() {
     return {
-      sneakers: []
+      sneakers: [],
+      // temporally
+      sellerLink: "https://github.com/yohann-kevin/STB"
     }
   },
   methods: {
@@ -36,6 +38,12 @@ export default {
     manageData: function(response) {
       console.log(response.data);
       this.sneakers = response.data;
+    },
+    displaySneaker: function() {
+      this.$refs.sneakeResult.style.display = "flex";
+    },
+    redirectToSeller: function(link) {
+      window.open(link);
     }
   },
   mounted() {
@@ -68,7 +76,7 @@ export default {
   justify-content: space-around;
 }
 
-#sneakersSearchBar form {
+#sneakersSearchBar div {
   width: 40%;
   display: flex;
   flex-wrap: wrap;
@@ -167,6 +175,7 @@ export default {
   flex-wrap: wrap;
   justify-content: space-around;
   padding-bottom: 25px;
+  display: none;
 }
 
 .sneaker-result {
@@ -185,7 +194,6 @@ export default {
 }
 
 .sneaker-result:hover {
-  /* box-shadow: 4px 4px var(--gray); */
   transform: scale(1.1);
   border-radius: 0;
   -webkit-border-radius: 0;
@@ -222,7 +230,7 @@ export default {
 }
 
 @media screen and (max-width:768px) {
-  #sneakersSearchBar form{
+  #sneakersSearchBar div {
     width: 80%;
   }
 
