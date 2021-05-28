@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="container-slider">
     <div id="slider" v-for="image in images" :key="image">
       <img class="slide" :src="image">
     </div>
@@ -62,8 +62,11 @@ export default {
 </script>
 
 <style scoped>
-.slide {
+.container-slider {
   width: 100%;
+}
+
+.slide {
   transition: 1s;
   -webkit-transition: 1s;
   -moz-transition: 1s;
