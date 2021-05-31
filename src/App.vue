@@ -1,9 +1,9 @@
 <template>
   <div id="app" ref="app">
-    <Header v-on:navIsOpen="navEvent(false,'250px')" v-on:navSmartIsOpen="navEvent(true,'100%')"/>
+    <Header ref="header" v-on:navIsOpen="navEvent(false,'250px')" v-on:navSmartIsOpen="navEvent(true,'100%')"/>
     <Nav v-on:navIsClose="navEvent(false,'0')" ref="nav"/>
     <SmartNav v-on:navSmartIsClose="navEvent(true,'0')" ref="smartnav"/>
-    <router-view></router-view>
+    <router-view v-on:isInAdmin="replaceIconHeader()"></router-view>
     <Footer v-on:openLog="openAdminLog()"/>
     <Login ref="logAdmin"/>
   </div>
@@ -36,6 +36,10 @@ export default {
     },
     openAdminLog: function() {
       this.$refs.logAdmin.$refs.loginModal.style.display = "block";
+    },
+    replaceIconHeader: function() {
+      this.$refs.header.isOnAdmin = true;
+      console.log(this.$refs.header.isOnAdmin);
     }
   }
 }

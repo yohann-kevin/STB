@@ -3,11 +3,19 @@
     <div id="logo">
       <img src="../assets/logo/sneake-toi-bien.png" alt="Sneake ta mère">
     </div>
-    <div id="burgerMenu">
-      <font-awesome-icon icon="bars" id="navOpening" v-on:click="openNav()"/>
+    <div v-if="!this.isOnAdmin" class="nav-container">
+      <div id="burgerMenu">
+        <font-awesome-icon icon="bars" id="navOpening" v-on:click="openNav()"/>
+      </div>
+      <div id="burgerMenuSmartphone">
+        <font-awesome-icon icon="bars" id="navOpening" v-on:click="openNavSmart()"/>
+      </div>
     </div>
-    <div id="burgerMenuSmartphone">
-      <font-awesome-icon icon="bars" id="navOpening" v-on:click="openNavSmart()"/>
+    <div class="container-arrow" v-on:click="exitAdmin()" v-else>
+      <router-link to="/" class="arrow-return">
+        <font-awesome-icon icon="arrow-left" class="arrow-left"/>
+        <p class="return-text">Logout</p>
+      </router-link>
     </div>
   </div>
 </template>
@@ -16,7 +24,8 @@
 export default {
   data () {
     return {
-      name: 'Header'
+      name: 'Header',
+      isOnAdmin: false
     }
   },
   methods: {
@@ -25,8 +34,11 @@ export default {
     },
     openNavSmart : function () {
       this.$emit('navSmartIsOpen');
+    },
+    exitAdmin: function() {
+      this.isOnAdmin = false;
     }
-  }
+  },
 }
 </script>
 
@@ -48,23 +60,58 @@ export default {
   width: 90%;
 }
 
-#top #burgerMenu {
+#top .nav-container {
   width: 10%;
+}
+
+#top #burgerMenu {
+  width: 100%;
   display: flex;
   justify-content: space-around;
   padding-top: 40px;
+}
+
+#top .container-arrow {
+  display: flex;
+  justify-content: space-around;
+  flex-wrap: wrap;
+  padding-top: 40px;
+  overflow: hidden;
+}
+
+.arrow-left {
+  margin-right: -40px;
+  transition: 0.5s;
+}
+
+.return-text {
+  float: right;
+  position: relative;
+  right: -500px;
+  margin-left: 10px;
+  transition: 0.5s;
+}
+
+#top .container-arrow:hover .arrow-left {
+  margin-right: 0;
+}
+
+#top .container-arrow:hover .return-text {
+  right: 10px;
 }
 
 #top #burgerMenuSmartphone {
   display: none;
 }
 
-#navOpening {
+#navOpening,
+.arrow-return {
   color: var(--white);
   font-size: 3rem;
 }
 
-#navOpening {
+#navOpening,
+.arrow-return {
   cursor: pointer;
 }
 @media screen and (max-width:768px) {

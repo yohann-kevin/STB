@@ -7,6 +7,7 @@ import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
 import { library } from '@fortawesome/fontawesome-svg-core'
 import { faBars } from '@fortawesome/free-solid-svg-icons'
 import { faSearch } from '@fortawesome/free-solid-svg-icons'
+import { faArrowLeft } from '@fortawesome/free-solid-svg-icons'
 
 // router
 import routes from './routes.js'
@@ -16,7 +17,7 @@ import App from './App.vue'
 
 Vue.use(VueRouter)
 
-library.add(faBars, faSearch)
+library.add(faBars, faSearch, faArrowLeft)
 
 Vue.component('font-awesome-icon', FontAwesomeIcon)
 

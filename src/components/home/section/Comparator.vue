@@ -4,18 +4,51 @@
       <h2>Comparateur</h2>
     </div>
     <div id="sneakersSearchBar" class="maxLength">
-      <form action="#" method="post">
+      <div>
         <label for="searchSneakers">Entrer un modèle de sneakers : </label>
         <input type="text" placeholder="Rechercher..." name="searchSneakers">
-        <button type="submit"><font-awesome-icon icon="search"/></button>
-      </form>
+        <button v-on:click="displaySneaker()"><font-awesome-icon icon="search"/></button>
+      </div>
+    </div>
+    <div class="result maxLength" ref="sneakeResult">
+      <article class="sneaker-result animate-bottom"  v-for="(sneaker, i) in sneakers" :key="i" v-on:click="redirectToSeller(sellerLink)">
+        <img :src="sneaker.image_path" />
+        <p class="model">{{ sneaker.model }}</p>
+        <p class="price">{{ sneaker.price }}</p>
+        <p class="gender">{{ sneaker.gender }}</p>
+        <p class="seller">Disponible sur <span class="sellerSite">{{ sneaker.seller_name }}</span></p>
+      </article>
     </div>
   </div>  
 </template>
 
 <script>
 export default {
-  
+  data() {
+    return {
+      sneakers: [],
+      // temporally
+      sellerLink: "https://github.com/yohann-kevin/STB"
+    }
+  },
+  methods: {
+    findData: function() {
+      this.$axios.get("https://scrapysneake.herokuapp.com/trend").then(response => this.manageData(response));
+    },
+    manageData: function(response) {
+      console.log(response.data);
+      this.sneakers = response.data;
+    },
+    displaySneaker: function() {
+      this.$refs.sneakeResult.style.display = "flex";
+    },
+    redirectToSeller: function(link) {
+      window.open(link);
+    }
+  },
+  mounted() {
+    this.findData();
+  }
 }
 </script>
 
@@ -43,7 +76,7 @@ export default {
   justify-content: space-around;
 }
 
-#sneakersSearchBar form {
+#sneakersSearchBar div {
   width: 40%;
   display: flex;
   flex-wrap: wrap;
@@ -136,8 +169,68 @@ export default {
   border-bottom-right-radius: 0;
 }
 
+.result {
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  padding-bottom: 25px;
+  display: none;
+}
+
+.sneaker-result {
+  width: 22%;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  border-bottom: 2px solid var(--gray);
+  background-color: var(--white);
+  border-radius: 10px;
+  transition: 0.5s;
+  -webkit-transition: 0.5s;
+  -moz-transition: 0.5s;
+  -ms-transition: 0.5s;
+  -o-transition: 0.5s;
+}
+
+.sneaker-result:hover {
+  transform: scale(1.1);
+  border-radius: 0;
+  -webkit-border-radius: 0;
+  -moz-border-radius: 0;
+  -ms-border-radius: 0;
+  -o-border-radius: 0;
+  cursor: pointer;
+}
+
+.sneaker-result img {
+  width: 100%;
+  height: 70%;
+  background-color: var(--gray-white);
+  border-top-right-radius: 10px;
+  border-top-left-radius: 10px;
+}
+
+.model,
+.gender {
+  padding: 5px;
+  width: 55%;
+  font-weight: bold;
+}
+
+.price,
+.seller {
+  padding: 5px;
+  width: 35%;
+}
+
+.sellerSite {
+  color: #e35205;
+  font-weight: bold;
+}
+
 @media screen and (max-width:768px) {
-  #sneakersSearchBar form{
+  #sneakersSearchBar div {
     width: 80%;
   }
 
