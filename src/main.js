@@ -1,6 +1,8 @@
 import Vue from 'vue'
-import axios from 'axios'
 import VueRouter from 'vue-router'
+
+// axios
+import axios from 'axios'
 
 // font awesome library
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
