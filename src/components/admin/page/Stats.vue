@@ -52,6 +52,13 @@ export default {
             backgroundColor: "rgba(71, 183,132,.5)",
             borderColor: "#47b784",
             borderWidth: 3
+          },
+          {
+            label: "Plop test",
+            data: [4, 5, 3.003, 0.5, 542, 274, 430.662, 514.514],
+            backgroundColor: "rgba(71, 183,132,.5)",
+            borderColor: "#ef4587",
+            borderWidth: 3
           }
         ]
       },
