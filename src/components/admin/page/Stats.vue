@@ -10,6 +10,7 @@
 
 <script>
 import Chart from "chart.js";
+import moment from 'moment';
 
 export default {
   data() {
@@ -39,20 +40,23 @@ export default {
         }]
       },
       dataLine: {
-        labels: ["Mercury", "Venus", "Earth", "Mars", "Jupiter", "Saturn", "Uranus", "Neptune"],
         datasets: [
           {
-            label: "Number of Moons",
-            data: [0, 0, 1, 2, 79, 82, 27, 14],
-            backgroundColor: "rgba(54,73,93,.5)",
+            label: "All sneakers",
+            fill: false,
             borderColor: "#36495d",
             borderWidth: 3
           },
           {
-            label: "Planetary Mass (relative to the Sun x 10^-6)",
-            data: [0.166, 2.081, 3.003, 0.323, 954.792, 285.886, 43.662, 51.514],
-            backgroundColor: "rgba(71, 183,132,.5)",
+            label: "Sneakers for man",
+            fill: false,
             borderColor: "#47b784",
+            borderWidth: 3
+          },
+          {
+            label: "Sneakers for women",
+            fill: false,
+            borderColor: "rgb(72, 61, 139)",
             borderWidth: 3
           }
         ]
@@ -81,6 +85,33 @@ export default {
     }
   },
   methods: {
+    findCount: function() {
+      this.$axios.get("http://localhost:3000/sneakers/count/all").then(response => this.manageData(response))
+    },
+    manageData: function(response) {
+      this.initChart();
+      for (let i = 7; i > -1; i--) {
+        this.dataLine.datasets[0].data.push(response.data["days" + i].counter_sneaker);
+        this.dataLine.datasets[1].data.push(response.data["days" + i].counter_sneaker_man);
+        this.dataLine.datasets[2].data.push(response.data["days" + i].counter_sneaker_women);
+      }
+      this.chartBar();
+      this.chartLine();
+    },
+    initChart: function() {
+      for (let i = 0; i < this.dataLine.datasets.length; i++) {
+        this.dataLine.datasets[i].data = [];
+      }
+      this.dataLine.labels = [];
+      this.initdate();
+    },
+    initdate: function() {
+      for (let i = 7; i > -1; i--) {
+        this.dataLine.labels.push(
+          moment().locale("fr").subtract(i, 'days').calendar()
+        );
+      }
+    },
     chartLine: function() {
       let ctx = this.$refs.colorchart;
       let data = this.dataBar;
@@ -103,8 +134,7 @@ export default {
     }
   },
   mounted() {
-    this.chartBar();
-    this.chartLine();
+    this.findCount();
   }
 }
 </script>
