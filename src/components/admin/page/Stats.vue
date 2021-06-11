@@ -86,7 +86,7 @@ export default {
   },
   methods: {
     findCount: function() {
-      this.$axios.get("http://localhost:3000/sneakers/count/all").then(response => this.manageData(response))
+      this.$axios.get("https://scrapysneake.herokuapp.com/sneakers/count/all").then(response => this.manageData(response))
     },
     manageData: function(response) {
       this.initChart();

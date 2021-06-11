@@ -14,7 +14,8 @@ export default {
       index: 0,
       images: [],
       isLoaded: false,
-      isInHome: false
+      isInHome: false,
+      errorCount: 0
     }
   },
   beforeMount() {
@@ -48,6 +49,10 @@ export default {
         }
       } catch(err) {
         console.log(err);
+        this.errorCount++;
+        console.log("----------------------------");
+        console.log(this.errorCount);
+        console.log("----------------------------");
       }
       if (this.isInHome) setTimeout(this.slider, 3000);
     },
