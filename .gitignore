@@ -24,3 +24,4 @@ pnpm-debug.log*
 
 key.txt
 helper.css
+.env
