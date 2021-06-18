@@ -24,7 +24,7 @@ export default {
   },
   methods: {
     findData: function() {
-      this.$axios.get("https://scrapysneake.herokuapp.com/trend").then(response => this.manageData(response));
+      this.$axios.get(process.env.VUE_APP_API_LINK + "/trend").then(response => this.manageData(response));
     },
     manageData: function(response) {
       console.log(response.data);

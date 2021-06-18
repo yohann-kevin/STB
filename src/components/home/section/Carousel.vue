@@ -57,7 +57,7 @@ export default {
       if (this.isInHome) setTimeout(this.slider, 3000);
     },
     findImg: function() {
-      this.$axios.get("https://scrapysneake.herokuapp.com/advert").then(response => this.manageData(response));
+      this.$axios.get(process.env.VUE_APP_API_LINK + "/advert").then(response => this.manageData(response));
     },
     manageData: function(response) {
       this.images = response.data.image_path;

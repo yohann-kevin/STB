@@ -39,6 +39,10 @@ export default {
       this.isOnAdmin = false;
     }
   },
+  mounted () {
+    console.log("var env : ");
+    console.log(process.env.VUE_APP_API_LINK);
+  }
 }
 </script>
 

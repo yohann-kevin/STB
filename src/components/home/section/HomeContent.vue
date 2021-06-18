@@ -30,7 +30,7 @@ export default {
   },
   methods: {
     findPartners: function() {
-      this.$axios.get("https://scrapysneake.herokuapp.com/partner/get").then(response => this.manageResponse(response))
+      this.$axios.get(process.env.VUE_APP_API_LINK + "/partner/get").then(response => this.manageResponse(response))
     },
     manageResponse: function(response) {
       this.partners = response.data;

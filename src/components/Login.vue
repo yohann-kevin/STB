@@ -44,7 +44,7 @@ export default {
     connectAdmin: function() {
       // console.log(request);
       // let request = "http://localhost:3000/login/" + this.request;
-      let request = "https://scrapysneake.herokuapp.com/login/" + this.request;
+      let request = process.env.VUE_APP_API_LINK + "/login/" + this.request;
       this.$axios.get(request).then(response => this.manageResponse(response));
     },
     manageErrorFormat: function() {
