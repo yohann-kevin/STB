@@ -2,6 +2,9 @@
 import Home from './components/home/Home.vue'
 import Index from './components/admin/Index.vue'
 
+// administration
+import login from './components/admin/Login.vue'
+
 // components admin
 import Stats from './components/admin/page/Stats.vue'
 import Advert from './components/admin/page/Advert.vue'
@@ -28,9 +31,14 @@ var routes = [
     component: Index,
     beforeEnter(to, from, next) {
       isAdmin = (to.params.isAdmin === "kirua&Kercode4");
-      if (from.name == "Home" && isAdmin) next({path: "/admin"});
+      if (isAdmin) next({path: "/admin"});
       else next({path: "/"});
     }
+  },
+  {
+    path: "/administration",
+    name: "Login",
+    component:login
   },
   {
     path: "/admin",
