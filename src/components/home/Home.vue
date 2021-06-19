@@ -43,6 +43,10 @@ export default {
       this.$refs.loader.style.display = "none";
       this.$refs.content.style.display = "block";
     }
+  },
+  mounted () {
+    console.log("env : ");
+    console.log(process.env.VUE_APP_API_LINK);
   }
 }
 </script>
