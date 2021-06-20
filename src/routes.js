@@ -26,30 +26,30 @@ var routes = [
     component: Home 
   },
   {
+    path: "/login",
+    name: "Login",
+    component:login
+  },
+  {
     path: "/admin/:isAdmin",
     name: "IndexAdmin",
     component: Index,
     beforeEnter(to, from, next) {
       isAdmin = (to.params.isAdmin === "kirua&Kercode4");
-      if (isAdmin) next({path: "/admin"});
+      if (isAdmin) next({path: "/administration"});
       else next({path: "/"});
     }
   },
   {
     path: "/administration",
-    name: "Login",
-    component:login
-  },
-  {
-    path: "/admin",
     name: "IndexAdmin",
     component: Index,
     beforeEnter(to, from, next) {
-      isAdmin ? next() : next({path: "/"});
+      isAdmin ? next() : next({path: "/login"});
     },
     children: [
       {
-        path: "/admin",
+        path: "/",
         component: Stats
       },
       {

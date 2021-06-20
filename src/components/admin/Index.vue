@@ -5,7 +5,7 @@
     </div>
     <nav class="adm-nav">
       <ul>
-        <li><router-link to="/admin" class="adm-link">Stats</router-link></li>
+        <li><router-link to="/administration" class="adm-link">Stats</router-link></li>
         <li><router-link to="/advert" class="adm-link">Annonce</router-link></li>
         <li><router-link to="/partners" class="adm-link">Partenaire</router-link></li>
         <li><router-link to="/scraper" class="adm-link">Scraper</router-link></li>
