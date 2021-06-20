@@ -23,7 +23,11 @@ var routes = [
   { 
     path: "/", 
     name: "Home",
-    component: Home 
+    component: Home,
+    beforeEnter(to, from, next) {
+      if (from.path == "/administration") isAdmin = false;
+      next();
+    }
   },
   {
     path: "/login",
