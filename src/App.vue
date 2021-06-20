@@ -4,8 +4,7 @@
     <Nav v-on:navIsClose="navEvent(false,'0')" ref="nav"/>
     <SmartNav v-on:navSmartIsClose="navEvent(true,'0')" ref="smartnav"/>
     <router-view v-on:isInAdmin="replaceIconHeader()"></router-view>
-    <Footer v-on:openLog="openAdminLog()"/>
-    <Login ref="logAdmin"/>
+    <Footer/>
   </div>
 </template>
 
@@ -14,7 +13,6 @@ import Header from './components/Header.vue'
 import Nav from './components/Nav.vue'
 import SmartNav from './components/SmartNav.vue'
 import Footer from './components/Footer.vue'
-import Login from './components/Login.vue'
 
 export default {
   name: 'App',
@@ -22,8 +20,7 @@ export default {
     Header,
     Nav,
     SmartNav,
-    Footer,
-    Login
+    Footer
   },
   methods: {
     navEvent: function (isSmart,value) {
@@ -33,9 +30,6 @@ export default {
       } else {
         this.$refs.smartnav.$refs.smartphoneNav.style.width = value;
       }
-    },
-    openAdminLog: function() {
-      this.$refs.logAdmin.$refs.loginModal.style.display = "block";
     },
     replaceIconHeader: function() {
       this.$refs.header.isOnAdmin = true;
