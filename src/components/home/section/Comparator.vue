@@ -6,17 +6,17 @@
     <div id="sneakersSearchBar" class="maxLength">
       <div>
         <label for="searchSneakers">Entrer un modèle de sneakers : </label>
-        <input type="text" placeholder="Rechercher..." name="searchSneakers">
-        <button v-on:click="displaySneaker()"><font-awesome-icon icon="search"/></button>
+        <input type="text" placeholder="Rechercher..." name="searchSneakers" ref="sneakerFinder">
+        <button v-on:click="searchSneaker()"><font-awesome-icon icon="search"/></button>
       </div>
     </div>
     <div class="result maxLength" ref="sneakeResult">
-      <article class="sneaker-result animate-bottom"  v-for="(sneaker, i) in sneakers" :key="i" v-on:click="redirectToSeller(sellerLink)">
-        <img :src="sneaker.image_path" />
+      <article class="sneaker-result animate-bottom"  v-for="(sneaker, i) in sneakers" :key="i" v-on:click="redirectToSeller(sneaker.link)">
+        <img :src="'//' + sneaker.image_path" />
         <p class="model">{{ sneaker.model }}</p>
         <p class="price">{{ sneaker.price }}</p>
         <p class="gender">{{ sneaker.gender }}</p>
-        <p class="seller">Disponible sur <span class="sellerSite">{{ sneaker.seller_name }}</span></p>
+        <p class="seller">Disponible sur <span class="sellerSite">{{ sneaker.seller }}</span></p>
       </article>
     </div>
   </div>  
@@ -26,21 +26,23 @@
 export default {
   data() {
     return {
-      sneakers: [],
-      // temporally
-      sellerLink: "https://github.com/yohann-kevin/STB"
+      modelRequest: "",
+      sneakers: []
     }
   },
   methods: {
-    findData: function() {
-      this.$axios.get(process.env.VUE_APP_API_LINK + "/trend").then(response => this.manageData(response));
+    findSneakers: function () {
+      this.$axios.get(process.env.VUE_APP_API_LINK + "/sneakers/find/" + this.modelRequest)
+        .then(response => this.manageData(response));
     },
     manageData: function(response) {
       console.log(response.data);
       this.sneakers = response.data;
-    },
-    displaySneaker: function() {
       this.$refs.sneakeResult.style.display = "flex";
+    },
+    searchSneaker: function() {
+      this.modelRequest = this.$refs.sneakerFinder.value;
+      this.findSneakers();
     },
     redirectToSeller: function(link) {
       window.open(link);
