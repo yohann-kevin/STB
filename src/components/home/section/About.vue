@@ -3,26 +3,13 @@
     <div class="about-title maxLength">
       <h2>A propos...</h2>
     </div>
-    <div class="about-container maxLength">
-      <div class="about-content">
+    <div class="about-container maxLength" v-if="dataLoaded">
+      <div class="about-content" v-for="(article, i) in articles" :key="i">
         <div class="about-para">
-          <p class="about-para-title">Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
-          <p>Nulla velit consequat nulla cupidatat aliquip dolor adipisicing. Ad commodo minim tempor qui enim ut 
-            deserunt irure proident amet. Commodo officia nostrud sint deserunt aliqua aute. Do eu laborum sit est 
-            in exercitation aliquip occaecat est minim consectetur laboris aliqua sint. Enim minim excepteur laborum 
-            mollit aute esse. Amet veniam anim quis excepteur irure.</p>
+          <p class="about-para-title">{{ article.title }}</p>
+          <p>{{ article.content }}</p>
         </div>
-        <img src="../../../assets/about/about.png" alt="sneake toi bien">
-      </div>
-      <div class="about-content img-left">
-        <div class="about-para">
-          <p class="about-para-title">Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
-          <p>Nulla velit consequat nulla cupidatat aliquip dolor adipisicing. Ad commodo minim tempor qui enim ut 
-            deserunt irure proident amet. Commodo officia nostrud sint deserunt aliqua aute. Do eu laborum sit est 
-            in exercitation aliquip occaecat est minim consectetur laboris aliqua sint. Enim minim excepteur laborum 
-            mollit aute esse. Amet veniam anim quis excepteur irure.</p>
-        </div>
-        <img src="../../../assets/logo/sneake-toi-bien-white.png" alt="sneake toi bien">
+        <img :src="article.image_path" alt="sneake toi bien">
       </div>
     </div>
   </div>
@@ -30,7 +17,25 @@
 
 <script>
 export default {
-  
+  data() {
+    return {
+      articles: [],
+      dataLoaded: false
+    }
+  },
+  mounted() {
+    this.findData();
+  },
+  methods: {
+    findData: function() {
+      this.$axios.get(process.env.VUE_APP_API_LINK + "/about/get/")
+        .then(response => this.manageData(response.data));
+    },
+    manageData: function(data) {
+      this.articles = data;
+      this.dataLoaded = true;
+    }
+  }
 }
 </script>
 
