@@ -70,6 +70,11 @@ export default {
   padding: 14px 16px;
   font-size: 17px;
   width: 100%;
+  transition: 0.5s;
+}
+
+.tablink:hover {
+  padding-left: 10px;
 }
 
 #closenav {
