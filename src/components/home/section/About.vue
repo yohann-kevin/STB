@@ -3,22 +3,26 @@
     <div class="about-title maxLength">
       <h2>A propos...</h2>
     </div>
-    <div class="about-content maxLength">
-      <div class="about-para">
-        <p class="about-para-title">Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
-        <p>Nulla velit consequat nulla cupidatat aliquip dolor adipisicing. Ad commodo minim tempor qui enim ut 
-          deserunt irure proident amet. Commodo officia nostrud sint deserunt aliqua aute. Do eu laborum sit est 
-          in exercitation aliquip occaecat est minim consectetur laboris aliqua sint. Enim minim excepteur laborum 
-          mollit aute esse. Amet veniam anim quis excepteur irure.</p>
+    <div class="about-container maxLength">
+      <div class="about-content">
+        <div class="about-para">
+          <p class="about-para-title">Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
+          <p>Nulla velit consequat nulla cupidatat aliquip dolor adipisicing. Ad commodo minim tempor qui enim ut 
+            deserunt irure proident amet. Commodo officia nostrud sint deserunt aliqua aute. Do eu laborum sit est 
+            in exercitation aliquip occaecat est minim consectetur laboris aliqua sint. Enim minim excepteur laborum 
+            mollit aute esse. Amet veniam anim quis excepteur irure.</p>
+        </div>
+        <img src="../../../assets/about/about.png" alt="sneake toi bien">
       </div>
-      <img src="../../../assets/about/about.png" alt="sneake toi bien">
-      <img src="../../../assets/logo/sneake-toi-bien-white.png" alt="sneake toi bien">
-      <div class="about-para">
-        <p class="about-para-title">Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
-        <p>Nulla velit consequat nulla cupidatat aliquip dolor adipisicing. Ad commodo minim tempor qui enim ut 
-          deserunt irure proident amet. Commodo officia nostrud sint deserunt aliqua aute. Do eu laborum sit est 
-          in exercitation aliquip occaecat est minim consectetur laboris aliqua sint. Enim minim excepteur laborum 
-          mollit aute esse. Amet veniam anim quis excepteur irure.</p>
+      <div class="about-content img-left">
+        <div class="about-para">
+          <p class="about-para-title">Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
+          <p>Nulla velit consequat nulla cupidatat aliquip dolor adipisicing. Ad commodo minim tempor qui enim ut 
+            deserunt irure proident amet. Commodo officia nostrud sint deserunt aliqua aute. Do eu laborum sit est 
+            in exercitation aliquip occaecat est minim consectetur laboris aliqua sint. Enim minim excepteur laborum 
+            mollit aute esse. Amet veniam anim quis excepteur irure.</p>
+        </div>
+        <img src="../../../assets/logo/sneake-toi-bien-white.png" alt="sneake toi bien">
       </div>
     </div>
   </div>
@@ -46,7 +50,7 @@ export default {
   padding: 15px;
 }
 
-.about-content {
+.about-container {
   display: flex;
   justify-content: space-around;
   flex-wrap: wrap;
@@ -58,6 +62,11 @@ export default {
   padding: 15px;
 }
 
+.about-content {
+  width: 100%;
+  display: flex;
+  justify-content: space-around;
+}
 .about-para-title {
   font-weight: bold;
   padding-bottom: 45px;
@@ -84,5 +93,9 @@ export default {
   -moz-border-radius: 0;
   -ms-border-radius: 0;
   -o-border-radius: 0;
+}
+
+.img-left {
+  /* work in progress */
 }
 </style>
