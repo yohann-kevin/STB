@@ -47,9 +47,6 @@ export default {
     redirectToSeller: function(link) {
       window.open(link);
     }
-  },
-  mounted() {
-    this.findData();
   }
 }
 </script>
