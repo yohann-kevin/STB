@@ -33,7 +33,7 @@ export default {
     },
     replaceIconHeader: function() {
       this.$refs.header.isOnAdmin = true;
-      console.log(this.$refs.header.isOnAdmin);
+      // console.log(this.$refs.header.isOnAdmin);
     }
   }
 }

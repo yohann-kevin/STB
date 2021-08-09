@@ -62,6 +62,10 @@ export default {
   padding-bottom: 15px;
 }
 
+.about-content:last-child {
+  flex-direction: row-reverse;
+}
+
 .about-para {
   width: 40%;
   padding: 15px;
@@ -98,9 +102,5 @@ export default {
   -moz-border-radius: 0;
   -ms-border-radius: 0;
   -o-border-radius: 0;
-}
-
-.img-left {
-  /* work in progress */
 }
 </style>

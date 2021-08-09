@@ -27,7 +27,7 @@ export default {
       this.$axios.get(process.env.VUE_APP_API_LINK + "/trend").then(response => this.manageData(response));
     },
     manageData: function(response) {
-      console.log(response.data);
+      // console.log(response.data);
       this.sneakers = response.data;
     }
   },

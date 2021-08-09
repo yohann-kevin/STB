@@ -40,8 +40,8 @@ export default {
     }
   },
   mounted () {
-    console.log("var env : ");
-    console.log(process.env.VUE_APP_API_LINK);
+    // console.log("var env : ");
+    // console.log(process.env.VUE_APP_API_LINK);
   }
 }
 </script>
