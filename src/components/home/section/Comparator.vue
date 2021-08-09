@@ -180,6 +180,7 @@ export default {
 .sneaker-result {
   width: 22%;
   display: flex;
+  margin-bottom: 15px;
   flex-wrap: wrap;
   justify-content: space-between;
   border-bottom: 2px solid var(--gray);
