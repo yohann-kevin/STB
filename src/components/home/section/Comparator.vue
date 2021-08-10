@@ -19,7 +19,7 @@
         <p class="seller">Disponible sur <span class="sellerSite">{{ sneaker.seller }}</span></p>
       </article>
     </div>
-  </div>  
+  </div>
 </template>
 
 <script>
