@@ -9,7 +9,7 @@ describe("Trend.vue", () => {
     expect(wrapper.text()).toMatch("Tendance");
   });
 
-  it("check trend data is not empty", () => {
-    expect(wrapper.findAll(".sneakerTrend")).not.toBeUndefined();
+  it("check trend data is not empty for trend section", () => {
+    expect(wrapper.find(".sneakerTrend")).not.toBeUndefined();
   });
-})
+});
