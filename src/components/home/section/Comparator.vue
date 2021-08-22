@@ -12,7 +12,8 @@
     </div>
     <div class="result maxLength" ref="sneakeResult">
       <article class="sneaker-result animate-bottom"  v-for="(sneaker, i) in sneakers" :key="i" v-on:click="redirectToSeller(sneaker.link)">
-        <img :src="'//' + sneaker.image_path" />
+        <img v-if="sneaker.seller == 'Foot Locker'" :src="'//' + sneaker.image_path" />
+        <img v-else :src="sneaker.image_path" />
         <p class="model">{{ sneaker.model }}</p>
         <p class="price">{{ sneaker.price }}</p>
         <p class="gender">{{ sneaker.gender }}</p>
@@ -180,7 +181,8 @@ export default {
 .sneaker-result {
   width: 22%;
   display: flex;
-  margin-bottom: 15px;
+  margin-bottom: 50px;
+  padding-bottom: 25px;
   flex-wrap: wrap;
   justify-content: space-between;
   border-bottom: 2px solid var(--gray);
@@ -218,10 +220,13 @@ export default {
   font-weight: bold;
 }
 
-.price,
-.seller {
+.price{
   padding: 5px;
   width: 35%;
+}
+
+.seller {
+  width: 40%;
 }
 
 .sellerSite {

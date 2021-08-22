@@ -3,7 +3,7 @@
     <div id="trendTitle" class="maxLength">
       <h2>Tendance</h2>
     </div>
-    <div id="lastTrend" class="maxLength">
+    <div id="lastTrend" class="maxLength last-trend">
       <article class="sneakerTrend" v-for="(sneaker, i) in sneakers" :key="i">
         <img :src="sneaker.image_path" />
         <p class="model">{{ sneaker.model }}</p>
@@ -19,7 +19,8 @@
 export default {
   data() {
     return {
-      sneakers: []
+      sneakers: [],
+      num: 2
     }
   },
   methods: {

@@ -5,7 +5,7 @@
       <h2>Le comparateur de prix de sneakers entièrement gratuit</h2>
     </div>
 
-    <div id="presentation">
+    <div id="presentation" class="presentation">
       <h3>Présentation</h3>
       <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Ullam aliquam, inventore perspiciatis
           earum reiciendis obcaecati quos nobis rerum eum a commodi optio dolorem! Architecto perspiciatis
