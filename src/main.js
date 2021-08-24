@@ -1,5 +1,6 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
+import VueResource from 'vue-resource'
 
 // axios
 import axios from 'axios'
@@ -18,6 +19,7 @@ import routes from './routes.js'
 import App from './App.vue'
 
 Vue.use(VueRouter)
+Vue.use(VueResource);
 
 library.add(faBars, faSearch, faArrowLeft)
 
@@ -28,6 +30,17 @@ Vue.config.productionTip = false
 Vue.prototype.$axios = axios
 
 const router = new VueRouter({ routes })
+
+Vue.http.interceptors.push(function(request, next){
+
+  request.headers.set('X-Frame-Options', 'SAMEORIGIN');
+  request.headers.set('X-Content-Type-Options', 'nosniff');
+  request.headers.set('Referrer-Policy', 'no-referrer-when-downgrade');
+  request.headers.set('Set-Cookie:', 'sess=123; path=/; HttpOnly');
+  request.headers.set('Strict-Transport-Security', 'max-age:31536000; includeSubDomains');
+
+  next();
+});
 
 new Vue({
   router,
