@@ -4,7 +4,7 @@
       <h2>Tendance</h2>
     </div>
     <div id="lastTrend" class="maxLength last-trend">
-      <article class="sneakerTrend" v-for="(sneaker, i) in sneakers" :key="i">
+      <article class="sneakerTrend" v-for="(sneaker, i) in sneakers" :key="i" v-on:click="redirectToSeller(sneaker.link)">
         <img :src="sneaker.image_path" />
         <p class="model">{{ sneaker.model }}</p>
         <p class="price">{{ sneaker.price }}</p>
@@ -25,10 +25,13 @@ export default {
   },
   methods: {
     findData: function() {
-      this.$axios.get(process.env.VUE_APP_API_LINK + "/trend").then(response => this.manageData(response));
+      this.$axios.get(process.env.VUE_APP_API_LINK + "/sneakers/find/most_wanted").then(response => this.manageData(response));
     },
     manageData: function(response) {
       this.sneakers = response.data;
+    },
+    redirectToSeller: function(link) {
+      window.open(link);
     }
   },
   mounted() {
