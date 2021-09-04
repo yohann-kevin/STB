@@ -20,16 +20,16 @@
       <div class="contact-form">
         <div class="contact-input">
           <label for="email">Votre email : </label>
-          <input type="email" name="email" placeholder="Votre Email..."/>
+          <input type="email" name="email" ref="email" placeholder="Votre Email..."/>
           <label for="object">Objet du message : </label>
-          <input type="text" name="object" placeholder="L'objet de votre message..."/>
+          <input type="text" name="object" ref="object" placeholder="L'objet de votre message..."/>
         </div>
         <div class="contact-input-content">
           <label for="message">Votre message : </label>
-          <textarea name="message" placeholder="Votre message..."></textarea>
+          <textarea name="message" ref="content" placeholder="Votre message..."></textarea>
         </div>
         <div class="contact-btn">
-          <button type="submit">Envoyer</button>
+          <button type="submit" v-on:click="sendMessage()">Envoyer</button>
           <button type="reset">Annuler</button>
         </div>
       </div>
@@ -39,7 +39,26 @@
 
 <script>
 export default {
-  
+  methods: {
+    sendMessage: function() {
+      let email = this.$refs.email.value;
+      let object = this.$refs.object.value;
+      let content = this.$refs.content.value;
+      
+      this.$axios.post(process.env.VUE_APP_API_LINK + "/messages", {
+        mail: email,
+        object: object,
+        content: content
+      }).then((response) => {
+        // manage response
+        console.log(response);
+      }, (error) => {
+        // manage error
+        console.log(error);
+        console.log("la requète n'est pas passer");
+      });
+    }
+  },
 }
 </script>
 
