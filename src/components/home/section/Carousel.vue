@@ -19,7 +19,6 @@ export default {
     }
   },
   beforeMount() {
-    console.log("plop mounted")
     this.findImg();
     this.isInHome = true;
   },
@@ -48,11 +47,11 @@ export default {
           this.isLoaded = true;
         }
       } catch(err) {
-        console.log(err);
-        this.errorCount++;
-        console.log("----------------------------");
-        console.log(this.errorCount);
-        console.log("----------------------------");
+        // console.log(err);
+        // this.errorCount++;
+        // console.log("----------------------------");
+        // console.log(this.errorCount);
+        // console.log("----------------------------");
       }
       if (this.isInHome) setTimeout(this.slider, 3000);
     },

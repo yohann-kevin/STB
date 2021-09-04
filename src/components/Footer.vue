@@ -1,6 +1,6 @@
 <template>
   <div id="bottom">
-    <p>Powered by &copy;Kirua 2021</p>
+    <p>Powered by &copy;WebGen 2021</p>
   </div> 
 </template>
 
