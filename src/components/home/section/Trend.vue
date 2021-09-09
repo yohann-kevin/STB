@@ -1,6 +1,6 @@
 <template>
-  <div id="trend">
-    <div id="trendTitle" class="maxLength">
+  <div id="trend" class="maxLength">
+    <div id="trendTitle">
       <h2>Tendance</h2>
     </div>
     <div id="lastTrend" class="maxLength last-trend">
@@ -42,6 +42,7 @@ export default {
 
 <style scoped>
 #trend {
+  width: 100%;
   background-color: var(--white);
   display: flex;
   flex-wrap: wrap;

@@ -138,13 +138,14 @@ export default {
   #top #burgerMenuSmartphone {
     display: block;
     width: 10%;
-    display: flex;
-    justify-content: space-around;
-    padding-top: 40px;
+    /* display: flex;
+    justify-content: space-around; */
+    padding-top: 30px;
     margin-right: 20px;
     position: fixed;
     right: 30px;
     top: 20px;
+    z-index: 100;
   }
   #top #burgerMenuSmartphone #navOpening {
     background-color: var(--purple);

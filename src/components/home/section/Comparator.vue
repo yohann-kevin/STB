@@ -1,12 +1,12 @@
 <template>
   <div id="comparator">
-    <div id="comparatorTitle" class="maxLength">
+    <div id="comparatorTitle">
       <h2>Comparateur</h2>
     </div>
     <div id="sneakersSearchBar" class="maxLength">
       <div>
         <label for="searchSneakers">Entrer un modèle de sneakers : </label>
-        <input type="text" placeholder="Rechercher..." name="searchSneakers" ref="sneakerFinder">
+        <input type="text" placeholder="Rechercher..." name="searchSneakers" ref="sneakerFinder" v-on:keyup.enter="searchSneaker()">
         <button v-on:click="searchSneaker()"><font-awesome-icon icon="search"/></button>
       </div>
     </div>
@@ -54,7 +54,7 @@ export default {
 
 <style scoped>
 #comparator {
-  min-height: 200px;
+  width: 100%;
   background-color: var(--purple);
   display: flex;
   flex-wrap: wrap;
@@ -69,7 +69,7 @@ export default {
 }
 
 #sneakersSearchBar {
-  width: 50%;
+  /* width: 50%; */
   text-align: center;
   display: flex;
   flex-wrap: wrap;
@@ -236,6 +236,10 @@ export default {
 
 @media screen and (max-width:768px) {
   #sneakersSearchBar div {
+    width: 80%;
+  }
+
+  .sneaker-result {
     width: 80%;
   }
 

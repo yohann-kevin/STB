@@ -1,9 +1,9 @@
 <template>
-  <div id="contact">
+  <div id="contact" class="maxLength">
     <div class="contact-title">
       <h2>Nous contacter</h2>
     </div>
-    <div class="contact-content maxLength">
+    <div class="contact-content">
       <div class="contact-info">
         <h3>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Beatae quam explicabo eaque.</h3>
         <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Delectus laborum quam sapiente quas
@@ -19,6 +19,7 @@
       </div>
       <div class="contact-form">
         <div class="contact-input">
+          <span ref="resultMessage" class="contact-result-message"></span>
           <label for="email">Votre email : </label>
           <input type="email" name="email" ref="email" placeholder="Votre Email..."/>
           <label for="object">Objet du message : </label>
@@ -30,7 +31,7 @@
         </div>
         <div class="contact-btn">
           <button type="submit" v-on:click="sendMessage()">Envoyer</button>
-          <button type="reset">Annuler</button>
+          <button type="reset" v-on:click="resetMessage()">Annuler</button>
         </div>
       </div>
     </div>
@@ -44,19 +45,43 @@ export default {
       let email = this.$refs.email.value;
       let object = this.$refs.object.value;
       let content = this.$refs.content.value;
-      
+
+      this.checkValueMessage(email, object, content) ? this.postMessage(email, object, content) : this.displayError();
+    },
+    checkValueMessage: function(email, object, content) {
+      if (email == "" || object == "" || content == "") {
+        return false;
+      } else {
+        return true;
+      }
+    },
+    postMessage: function(email, object, content) {
       this.$axios.post(process.env.VUE_APP_API_LINK + "/messages", {
         mail: email,
         object: object,
         content: content
       }).then((response) => {
-        // manage response
         console.log(response);
+        this.displaySuccessMessage();
       }, (error) => {
-        // manage error
         console.log(error);
         console.log("la requète n'est pas passer");
       });
+    },
+    displayError: function() {
+      let errMsg = "Quelque chose ses mal passer, veuillez réessayer ! ";
+      this.$refs.resultMessage.textContent = errMsg;
+      this.$refs.resultMessage.style.color = "red";
+    },
+    displaySuccessMessage: function() {
+      let successMessage = "Le message à bien été envoyer ! ";
+      this.$refs.resultMessage.textContent = successMessage;
+      this.$refs.resultMessage.style.color = "lightgreen";  
+    },
+    resetMessage: function() {
+      this.$refs.email.value = "";
+      this.$refs.object.value = "";
+      this.$refs.content.value = "";
     }
   },
 }
@@ -113,6 +138,11 @@ export default {
   flex-wrap: wrap;
 }
 
+.contact-result-message {
+  width: 100%;
+  text-align: center;
+}
+
 .contact-input label {
   width: 100%;
   text-align: center;
@@ -149,6 +179,7 @@ export default {
 .contact-input-content textarea {
   width: 100%;
   height: 100px;
+  padding: 5px;
 }
 
 .contact-btn {
@@ -171,5 +202,22 @@ export default {
 .contact-btn button:hover {
   cursor: pointer;
   transform: scale(1.1);
+}
+
+@media screen and (max-width:768px) {
+  .contact-info {
+    width: 80%;
+    margin-bottom: 15px;
+    margin-top: -20px;
+  }
+
+  .contact-info h3 {
+    text-align: center;
+    padding-bottom: 10px;
+  }
+
+  .contact-form {
+    width: 100%;
+  }
 }
 </style>
