@@ -27,7 +27,7 @@ export default {
   height: 100%;
   width: 0;
   position: fixed;
-  z-index: 1;
+  z-index: 200;
   left: 0;
   top: 0;
   background-color: rgb(0, 0, 0);
@@ -38,7 +38,7 @@ export default {
 
 .overlay-content {
   position: relative;
-  top: 25%;
+  top: 15%;
   width: 100%;
   text-align: center;
   margin-top: 30px;
