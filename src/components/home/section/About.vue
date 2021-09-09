@@ -1,5 +1,5 @@
 <template>
-  <div id="about" class="maxLength">
+  <div id="about">
     <div class="about-title">
       <h2>A propos...</h2>
     </div>

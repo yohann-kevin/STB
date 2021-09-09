@@ -1,9 +1,9 @@
 <template>
-  <div id="comparator" class="maxLength">
+  <div id="comparator">
     <div id="comparatorTitle">
       <h2>Comparateur</h2>
     </div>
-    <div id="sneakersSearchBar">
+    <div id="sneakersSearchBar" class="maxLength">
       <div>
         <label for="searchSneakers">Entrer un modèle de sneakers : </label>
         <input type="text" placeholder="Rechercher..." name="searchSneakers" ref="sneakerFinder" v-on:keyup.enter="searchSneaker()">
