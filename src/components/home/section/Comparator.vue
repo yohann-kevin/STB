@@ -6,7 +6,7 @@
     <div id="sneakersSearchBar">
       <div>
         <label for="searchSneakers">Entrer un modèle de sneakers : </label>
-        <input type="text" placeholder="Rechercher..." name="searchSneakers" ref="sneakerFinder">
+        <input type="text" placeholder="Rechercher..." name="searchSneakers" ref="sneakerFinder" v-on:keyup.enter="searchSneaker()">
         <button v-on:click="searchSneaker()"><font-awesome-icon icon="search"/></button>
       </div>
     </div>
