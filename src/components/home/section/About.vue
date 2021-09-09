@@ -1,6 +1,6 @@
 <template>
-  <div id="about">
-    <div class="about-title maxLength">
+  <div id="about" class="maxLength">
+    <div class="about-title">
       <h2>A propos...</h2>
     </div>
     <div class="about-container maxLength" v-if="dataLoaded">
@@ -41,7 +41,7 @@ export default {
 
 <style scoped>
 #about {
-  min-height: 500px;
+  width: 100%;
   background-color: var(--purple);
   color: var(--white);
   display: flex;
@@ -75,7 +75,9 @@ export default {
   width: 100%;
   display: flex;
   justify-content: space-around;
+  flex-wrap: wrap;
 }
+
 .about-para-title {
   font-weight: bold;
   padding-bottom: 45px;
@@ -102,5 +104,19 @@ export default {
   -moz-border-radius: 0;
   -ms-border-radius: 0;
   -o-border-radius: 0;
+}
+
+@media screen and (max-width:768px) {
+  .about-content img {
+    width: 80%;
+  }
+
+  .about-para {
+    width: 80%;
+  }
+
+  .about-para-title {
+    padding-bottom: 15px;
+  }
 }
 </style>

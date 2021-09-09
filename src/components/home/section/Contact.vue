@@ -1,9 +1,9 @@
 <template>
-  <div id="contact">
+  <div id="contact" class="maxLength">
     <div class="contact-title">
       <h2>Nous contacter</h2>
     </div>
-    <div class="contact-content maxLength">
+    <div class="contact-content">
       <div class="contact-info">
         <h3>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Beatae quam explicabo eaque.</h3>
         <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Delectus laborum quam sapiente quas
@@ -149,6 +149,7 @@ export default {
 .contact-input-content textarea {
   width: 100%;
   height: 100px;
+  padding: 5px;
 }
 
 .contact-btn {
@@ -171,5 +172,22 @@ export default {
 .contact-btn button:hover {
   cursor: pointer;
   transform: scale(1.1);
+}
+
+@media screen and (max-width:768px) {
+  .contact-info {
+    width: 80%;
+    margin-bottom: 15px;
+    margin-top: -20px;
+  }
+
+  .contact-info h3 {
+    text-align: center;
+    padding-bottom: 10px;
+  }
+
+  .contact-form {
+    width: 100%;
+  }
 }
 </style>

@@ -1,16 +1,14 @@
 <template>
   <div>
-    <!-- <h1>Home</h1> -->
-    
     <div ref="content" style="display:none;" class="animate-bottom">
       <div id="home">
         <Carousel v-on:loaded="displayContent()"/>
         <HomeContent/>
+        <Comparator/>
+        <Trend/>
+        <About/>
+        <Contact/>
       </div>
-      <Comparator/>
-      <Trend/>
-      <About/>
-      <Contact/>
     </div>
     <div ref="loader">
       <Loader/>
