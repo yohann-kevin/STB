@@ -31,20 +31,35 @@ export default {
     },
     checkValue: function(name, pass) {
       this.request = name + "&" + pass;
-      this.reg.test(pass) ? this.connectAdmin() : this.manageErrorFormat();
+      this.reg.test(pass) ? this.connectAdmin(name, pass) : this.manageErrorFormat();
     },
-    connectAdmin: function() {
-      // console.log(request);
-      // let request = "http://localhost:3000/login/" + this.request;
-      let request = process.env.VUE_APP_API_LINK + "/login/" + this.request;
-      this.$axios.get(request).then(response => this.manageResponse(response));
+    connectAdmin: function(name, pass) {
+      let data = {
+        "name": name,
+        "password": pass
+      };
+      let url = process.env.VUE_APP_API_LINK + "login";
+      let config = {
+        method: 'post',
+        url: url,
+        headers: { 
+          'Content-Type': 'application/json'
+        },
+        data: data
+      }
+
+      this.$axios(config).then(response => {
+        this.manageResponse(response);
+      }).catch(error => {
+        console.log(error);
+      });
     },
     manageErrorFormat: function() {
       this.$refs.passmsg.textContent = "Invalid password !";
       this.$refs.passmsg.style.color = "red";
     },
     manageResponse: function(response) {
-      console.log(response.data.response);
+      console.log(response.data);
       if (response.data.response.is_users) {
         this.$router.push("admin/" + this.request);
         this.$refs.loginModal.style.display = "none";
