@@ -61,6 +61,7 @@ export default {
     manageResponse: function(response) {
       console.log(response.data);
       if (response.data.response.is_users) {
+        this.$store.commit("adminToken", response.data.token);
         this.$router.push("admin/" + this.request);
         this.$refs.loginModal.style.display = "none";
       } else {

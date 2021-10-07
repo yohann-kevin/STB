@@ -10,6 +10,9 @@ export default {
     return {
       name: "Advert",
     }
+  },
+  mounted() {
+    console.log(this.$store.state.adminToken);
   }
 }
 </script>

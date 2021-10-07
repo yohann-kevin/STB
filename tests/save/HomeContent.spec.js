@@ -1,6 +1,6 @@
 import { mount } from "@vue/test-utils";
 import HomeContent from "@/components/home/section/HomeContent.vue";
-import axios from 'axios';
+// import axios from 'axios';
 
 // describe("Trend.vue", () => {
   // const wrapper = mount(HomeContent,  { mocks: { $axios: axios } });

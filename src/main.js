@@ -20,6 +20,8 @@ import routes from './routes.js'
 // components
 import App from './App.vue'
 
+import store from './store.js'
+
 Vue.use(VueRouter)
 
 library.add(faBars, faSearch, faArrowLeft)
@@ -35,5 +37,6 @@ const router = new VueRouter({ routes })
 
 new Vue({
   router,
+  store,
   render: h => h(App)
 }).$mount('#app')
