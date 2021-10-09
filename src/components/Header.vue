@@ -13,8 +13,8 @@
     </div>
     <div class="container-arrow" v-on:click="exitAdmin()" v-else>
       <router-link to="/" class="arrow-return">
-        <font-awesome-icon icon="arrow-left" class="arrow-left"/>
-        <p class="return-text">Logout</p>
+        <font-awesome-icon icon="arrow-left" class="arrow-left" v-on:click="logout()"/>
+        <p class="return-text" v-on:click="logout()">Logout</p>
       </router-link>
     </div>
   </div>
@@ -37,6 +37,10 @@ export default {
     },
     exitAdmin: function() {
       this.isOnAdmin = false;
+    },
+    logout: function() {
+      this.$store.commit("adminToken", null);
+      this.$store.commit("adminConnected", false);
     }
   },
   mounted () {
