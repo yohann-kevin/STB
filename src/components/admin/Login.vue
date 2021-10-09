@@ -30,7 +30,6 @@ export default {
       this.checkValue(this.$refs.name.value, this.$refs.pass.value);
     },
     checkValue: function(name, pass) {
-      this.request = name + "&" + pass;
       this.reg.test(pass) ? this.connectAdmin(name, pass) : this.manageErrorFormat();
     },
     connectAdmin: function(name, pass) {
@@ -59,10 +58,10 @@ export default {
       this.$refs.passmsg.style.color = "red";
     },
     manageResponse: function(response) {
-      console.log(response.data);
       if (response.data.response.is_users) {
         this.$store.commit("adminToken", response.data.token);
-        this.$router.push("admin/" + this.request);
+        this.$store.commit("adminConnected", true);
+        this.$router.push("administration");
         this.$refs.loginModal.style.display = "none";
       } else {
         if (response.data.response.name) this.errorName();

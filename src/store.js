@@ -5,11 +5,15 @@ Vue.use(Vuex)
 
 export default new Vuex.Store({
   state: {
-    adminToken: null
+    adminToken: null,
+    adminConnected: false
   },
   mutations: {
     adminToken: (state, token) => {
       state.adminToken = token;
+    },
+    adminConnected: (state, isConnected) => {
+      state.adminConnected = isConnected;
     }
   },
   actions: {

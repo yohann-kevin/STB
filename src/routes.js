@@ -17,31 +17,21 @@ import Parameter from './components/admin/page/Parameter.vue'
 // error components
 import Error404 from './components/error/404.vue'
 
-let isAdmin = false;
+// store
+import store from './store.js';
 
 var routes = [
   { 
     path: "/", 
     name: "Home",
     component: Home,
-    beforeEnter(to, from, next) {
-      if (from.path == "/administration") isAdmin = false;
-      next();
-    }
   },
   {
     path: "/login",
     name: "Login",
-    component:login
-  },
-  {
-    path: "/admin/:isAdmin",
-    name: "IndexAdmin",
-    component: Index,
+    component:login,
     beforeEnter(to, from, next) {
-      isAdmin = (to.params.isAdmin === "kirua&Kercode4");
-      if (isAdmin) next({path: "/administration"});
-      else next({path: "/"});
+      store.state.adminConnected ? next({ path: "/administration" }) : next();
     }
   },
   {
@@ -49,7 +39,7 @@ var routes = [
     name: "IndexAdmin",
     component: Index,
     beforeEnter(to, from, next) {
-      isAdmin ? next() : next({path: "/login"});
+      store.state.adminConnected ? next() : next({path: "/login"});
     },
     children: [
       {
