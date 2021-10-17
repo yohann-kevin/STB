@@ -38,6 +38,7 @@ export default {
   display: flex;
   justify-content: space-around;
   flex-wrap: wrap;
+  background-color: #F6F4F9;
 }
 
 .adm-title {
