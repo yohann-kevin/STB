@@ -10,14 +10,9 @@ import Chart from "chart.js";
 import moment from 'moment';
 
 export default {
-  props: {
-    sneakerCount: {
-      type: Object,
-      require: true
-    }
-  },
   data() {
     return  {
+      sneakerCount: null,
       nbSneaker: {
         datasets: [
           {
@@ -57,6 +52,12 @@ export default {
     }
   },
   methods: {
+    findCount: function() {
+      this.$axios.get(process.env.VUE_APP_API_LINK + "/sneakers/count/all").then(response => {
+        this.sneakerCount = response.data;
+        this.initData();
+      });
+    },
     initData: function() {
       this.initChart();
       for (let i = 7; i > -1; i--) {
@@ -65,7 +66,6 @@ export default {
         this.nbSneaker.datasets[2].data.push(this.sneakerCount["days" + i].counter_sneaker_women);
       }
       this.nbSneakerChart();
-      // this.chartLine();
     },
     initChart: function() {
       for (let i = 0; i < this.nbSneaker.datasets.length; i++) {
@@ -94,7 +94,7 @@ export default {
     }
   },
   mounted() {
-    this.initData();
+    this.findCount();
   },
 }
 </script>

@@ -2,7 +2,7 @@
   <div class="show-stats animate-bottom">
     <h1>Stats</h1>
     <div class="data-viz">
-      <NumberSneaker :sneakerCount="findCount()"/>
+      <NumberSneaker/>
       <MostSellerAppear/>
     </div>
   </div>
@@ -16,12 +16,6 @@ export default {
   components: {
     NumberSneaker,
     MostSellerAppear
-  },
-  methods: {
-    findCount: function() {
-      this.$axios.get(process.env.VUE_APP_API_LINK + "/sneakers/count/all").then(response => this.sneakerCount = response.data)
-      return this.sneakerCount;
-    }
   }
 }
 </script>
