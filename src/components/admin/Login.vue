@@ -1,15 +1,17 @@
 <template>
   <div class="login-admin">
     <h1>Login to administration</h1>
-    <label>Name : </label>
-    <span ref="namemsg"></span>
-    <input type="text" name="name" placeholder="Name" ref="name"/>
-    <label>Password : </label>
-    <span ref="passmsg"></span>
-    <input type="password" name="pass" placeholder="Password" ref="pass"/>
-    <div class="login-button">
-      <button type="submit" v-on:click="buildRequest()">Se connecter</button>
-      <!-- <button type="reset">Annuler</button> -->
+    <div class="login-form">
+      <label>Name : </label>
+      <span ref="namemsg"></span>
+      <input type="text" name="name" placeholder="Name" ref="name"/>
+      <label>Password : </label>
+      <span ref="passmsg"></span>
+      <input type="password" name="pass" placeholder="Password" ref="pass"/>
+      <div class="login-button">
+        <button type="submit" v-on:click="buildRequest()">Se connecter</button>
+        <button type="reset" v-on:click="resetForm()">Annuler</button>
+      </div>
     </div>
   </div>
 </template>
@@ -18,8 +20,7 @@
 export default {
   data() {
     return {
-      reg: new RegExp("(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.{8,})"),
-      request: null
+      reg: new RegExp("(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.{8,})")
     }
   },
   methods: {
@@ -75,6 +76,10 @@ export default {
     errorPass: function() {
       this.$refs.passmsg.textContent = "Unknown password !";
       this.$refs.passmsg.style.color = "red";      
+    },
+    resetForm: function() {
+      this.$refs.name.value = "";
+      this.$refs.pass.value = "";
     }
   }
 }
@@ -82,7 +87,8 @@ export default {
 
 <style>
 .login-admin {
-  min-height: 80vh;
+  width: 100%;
+  /* min-height: 80vh; */
   display: flex;
   justify-content: space-around;
   flex-wrap: wrap;
@@ -94,24 +100,36 @@ export default {
   padding: 5px;
 }
 
-.login-content {
-  width: 100%;
+.login-form {
+  color: var(--gray);
+  width: 40%;
   display: flex;
-  justify-content: center;
+  justify-content: space-around;
   flex-wrap: wrap;
+  margin-bottom: 45vh;
 }
 
-.login-content label {
+.login-form label {
   width: 100%;
   text-align: center;
-  font-size: 1.3rem;
-  padding: 5px;
+  margin-top: 15px;
+  margin-bottom: 15px;
 }
 
-.login-content input {
-  width: 100%;
-  padding: 5px;
-  border: none;
+.login-form input {
+  width: 40%;
+  height: 20px;
+  border-radius: 15px;
+  outline: none;
+  margin: 10px;
+  padding: 8px;
+  border: 1px solid var(--gray);
+  border-radius: 10px;
+  transition: 0.5s;
+}
+
+.login-form input:focus {
+  border-radius: 0;
 }
 
 .login-button {
@@ -119,14 +137,23 @@ export default {
   display: flex;
   justify-content: space-around;
   flex-wrap: wrap;
+  margin-top: 15px;
 }
 
 .login-button button {
-  width: 100%;
-  margin: 5px 0;
-  height: 25px;
-  color: var(--purple);
-  border: none;
+  margin: 20px;
+  width: 30%;
+  height: 30px;
+  color: #fff;
+  border: 1px solid var(--gray);
+  border-radius: 15px;
+  background-color: var(--purple);
+  transition: 0.5s;
+}
+
+.login-button button:hover {
+  cursor: pointer;
+  transform: scale(1.1);
 }
 
 .login-button button:hover {

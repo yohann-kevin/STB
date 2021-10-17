@@ -5,11 +5,13 @@
     </div>
     <div id="lastTrend" class="maxLength last-trend">
       <article class="sneakerTrend" v-for="(sneaker, i) in sneakers" :key="i" v-on:click="redirectToSeller(sneaker.link)">
-        <img :src="sneaker.image_path" />
+        <img v-if="sneaker.seller == 'Foot Locker'" :src="'//' + sneaker.image_path" />
+        <img v-else :src="sneaker.image_path" />
+        <!-- <img :src="sneaker.image_path" /> -->
         <p class="model">{{ sneaker.model }}</p>
-        <p class="price">{{ sneaker.price }}</p>
+        <p class="price">{{ sneaker.price }} €</p>
         <p class="gender">{{ sneaker.gender }}</p>
-        <p class="seller">Disponible sur <span class="sellerSite">{{ sneaker.seller_name }}</span></p>
+        <p class="seller">Disponible sur <span class="sellerSite">{{ sneaker.seller }}</span></p>
       </article>
     </div>
   </div>
@@ -70,6 +72,8 @@ export default {
   flex-wrap: wrap;
   justify-content: space-between;
   border-bottom: 2px solid var(--purple);
+  margin-bottom: 25px;
+  padding-bottom: 15px;
   transition: 0.5s;
   -webkit-transition: 0.5s;
   -moz-transition: 0.5s;
@@ -103,7 +107,7 @@ export default {
 
 .price,
 .seller {
-  width: 35%;
+  width: 40%;
 }
 
 /* dynamic color */

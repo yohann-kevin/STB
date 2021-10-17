@@ -1,23 +1,22 @@
 <template>
   <div class="visualisation">
-    <h2 class="visu-title">Plop :</h2>
+    <h2 class="visu-title">Vendeur apparaissant le plus dans les recherches :</h2>
     <canvas ref="colorchart" id="color-chart" class="color-chart"></canvas>
   </div>
 </template>
 
 <script>
 import Chart from "chart.js";
-// import moment from 'moment';
 
 export default {
   data() {
     return {
-      sneakerCount: null,
-      dataBar: {
-        labels: ['Red', 'Blue', 'Yellow', 'Green', 'Purple', 'Orange'],
+      mostSeller: null,
+      dataMostSeller: {
+        labels: [],
         datasets: [{
           label: '# of Votes',
-          data: [12, 19, 3, 5, 2, 3],
+          data: [],
           backgroundColor: [
             'rgba(255, 99, 132, 0.2)',
             'rgba(54, 162, 235, 0.2)',
@@ -37,7 +36,7 @@ export default {
           borderWidth: 1
         }]
       },
-      optionsBar: {
+      optionsMostSeller: {
         scales: {
           y: {
             beginAtZero: true
@@ -47,10 +46,26 @@ export default {
     }
   },
   methods: {
-    chartLine: function() {
+    findMostSeller: function() {
+      this.$axios.get(process.env.VUE_APP_API_LINK + "sneakers/find/most_seller").then(response => {
+        this.mostSeller = response.data;
+        this.manageMostSeller();
+      });
+    },
+    manageMostSeller: function() {
+      for (let seller in this.mostSeller) {
+        if (this.mostSeller[seller] != 0) {
+          this.dataMostSeller.labels.push(seller);
+          this.dataMostSeller.datasets[0].data.push(this.mostSeller[seller]);
+        }
+      }
+      console.log(this.dataMostSeller.labels);
+      this.mostSellerChart();
+    },
+    mostSellerChart: function() {
       let ctx = this.$refs.colorchart;
-      let data = this.dataBar;
-      let options = this.optionsBar;
+      let data = this.dataMostSeller;
+      let options = this.optionsMostSeller;
       new Chart(ctx, {
           type: 'bar',
           data,
@@ -59,7 +74,7 @@ export default {
     }
   },
   mounted() {
-    this.chartLine();
+    this.findMostSeller();
   }
 }
 </script>
