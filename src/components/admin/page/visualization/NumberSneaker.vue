@@ -18,26 +18,26 @@ export default {
           {
             label: "All sneakers",
             fill: false,
-            borderColor: "#36495d",
+            borderColor: "#8D39FA",
             borderWidth: 3
           },
           {
             label: "Sneakers for man",
             fill: false,
-            borderColor: "#47b784",
+            borderColor: "#3a5790",
             borderWidth: 3
           },
           {
             label: "Sneakers for women",
             fill: false,
-            borderColor: "rgb(72, 61, 139)",
+            borderColor: "#cc0052",
             borderWidth: 3
           }
         ]
       },
       optionsNbSneaker: {
         responsive: true,
-        lineTension: 1,
+        lineTension: 2,
         scales: {
           yAxes: [
             {
