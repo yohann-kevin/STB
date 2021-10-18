@@ -22,17 +22,24 @@ export default {
             "rgba(253, 224, 0, 0.6)",
             "rgba(0, 0, 0, 0.6)",
             "rgba(58, 87, 144, 0.6)"
-          ],
-          barPercentage: 0.5
+          ]
         }]
       },
       optionsMostSeller: {
         responsive: true,
-        
-          legend: {
-            position: 'right'
+        legend: {
+          position: 'right'
+        },
+        tooltips: {
+          callbacks: {
+            label (tooltipItem, data) {
+              let index = tooltipItem["index"];
+              let datasets = data["datasets"][0]["data"];
+              let label = data["labels"]
+              return label[index] + " est apparu " + datasets[index] + " fois";
+            }
           }
-        
+        }
       }
     }
   },
@@ -50,7 +57,6 @@ export default {
           this.dataMostSeller.datasets[0].data.push(this.mostSeller[seller]);
         }
       }
-      console.log(this.dataMostSeller.labels);
       this.mostSellerChart();
     },
     mostSellerChart: function() {
