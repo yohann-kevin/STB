@@ -11,7 +11,7 @@
       </div>
     </div>
     <div class="result maxLength" ref="sneakeResult">
-      <article class="sneaker-result animate-bottom"  v-for="(sneaker, i) in sneakers" :key="i" v-on:click="redirectToSeller(sneaker.link)">
+      <article class="sneaker-result animate-bottom"  v-for="(sneaker, i) in sneakers" :key="i" v-on:click="redirectToSeller(sneaker)">
         <img v-if="sneaker.seller == 'Foot Locker'" :src="'//' + sneaker.image_path" />
         <img v-else :src="sneaker.image_path" />
         <p class="model">{{ sneaker.model }}</p>
@@ -45,8 +45,20 @@ export default {
       this.modelRequest = this.$refs.sneakerFinder.value;
       this.findSneakers();
     },
-    redirectToSeller: function(link) {
-      window.open(link);
+    redirectToSeller: function(sneaker) {
+      let config = {
+        method: 'post',
+        // url: 'http://localhost:3000/sneakers/click/?id=0781cf91-789f-460e-9c73-75dc3628b97d&controller=sneakers&action=update_wanted',
+        url: process.env.VUE_APP_API_LINK + "/sneakers/click/?id=" + sneaker.id,
+        headers: { }
+      };
+
+      this.$axios(config).then(response => {
+        console.log(response);
+      }).catch(err => {
+        console.log(err);
+      });
+      window.open(sneaker.link);
     }
   }
 }
