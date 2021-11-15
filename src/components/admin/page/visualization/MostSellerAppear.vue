@@ -47,14 +47,15 @@ export default {
     findMostSeller: function() {
       this.$axios.get(process.env.VUE_APP_API_LINK + "sneakers/find/most_seller").then(response => {
         this.mostSeller = response.data;
+        console.log(response.data);
         this.manageMostSeller();
       });
     },
     manageMostSeller: function() {
-      for (let seller in this.mostSeller) {
-        if (this.mostSeller[seller] != 0) {
+      for (let i = 0; i < this.mostSeller.length; i++) {
+        for (let seller in this.mostSeller[i]) {
           this.dataMostSeller.labels.push(seller);
-          this.dataMostSeller.datasets[0].data.push(this.mostSeller[seller]);
+          this.dataMostSeller.datasets[0].data.push(this.mostSeller[i][seller]);
         }
       }
       this.mostSellerChart();

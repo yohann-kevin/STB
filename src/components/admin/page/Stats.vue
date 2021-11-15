@@ -46,19 +46,19 @@ export default {
 }
 
 .visualisation {
-  width: 43%;
+  width: 46%;
   background-color: #fff;
   box-shadow: 4px 4px 6px 0 #cacaca;
   padding: 15px;
   border-radius: 15px;
-  margin: 20px;
+  margin: 10px;
   transition: 0.5s;
 }
 
-.visualisation:hover {
+/* .visualisation:hover {
   transform: scale(1.1);
   cursor: pointer;
-}
+} */
 
 .visu-title {
   padding: 10px;
