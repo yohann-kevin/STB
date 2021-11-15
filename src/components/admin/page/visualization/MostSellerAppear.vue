@@ -47,7 +47,6 @@ export default {
     findMostSeller: function() {
       this.$axios.get(process.env.VUE_APP_API_LINK + "sneakers/find/most_seller").then(response => {
         this.mostSeller = response.data;
-        console.log(response.data);
         this.manageMostSeller();
       });
     },

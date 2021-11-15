@@ -4,6 +4,7 @@
     <div class="data-viz">
       <NumberSneaker/>
       <MostSellerAppear/>
+      <NumberSneakerBySeller/>
       <PriceAverage/>
     </div>
   </div>
@@ -12,13 +13,15 @@
 <script>
 import NumberSneaker from "./visualization/NumberSneaker";
 import MostSellerAppear from "./visualization/MostSellerAppear";
+import NumberSneakerBySeller from "./visualization/NumberSneakerBySeller";
 import PriceAverage from "./visualization/PriceAverage";
 
 export default {
   components: {
     NumberSneaker,
     MostSellerAppear,
-    PriceAverage
+    PriceAverage,
+    NumberSneakerBySeller
   }
 }
 </script>
