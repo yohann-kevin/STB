@@ -41,7 +41,7 @@ export default {
             label (tooltipItem, data) {
               let index = tooltipItem["index"];
               let datasets = data["datasets"][0]["data"];
-              return datasets[index] + "€"
+              return "prix moyen : " + datasets[index] + "€"
             }
           }
         }
@@ -50,15 +50,15 @@ export default {
   },
   methods: {
     findPriceAverage: function() {
-      this.$axios.get(process.env.VUE_APP_API_LINK + "/sneakers/search/best_seller_price").then(response => {
-        this.managePriceAverage(response.data.sneaker);
+      this.$axios.get(process.env.VUE_APP_API_LINK + "/sneakers/find/best_seller_price").then(response => {
+        this.managePriceAverage(response.data);
       });
     },
     managePriceAverage: function(price) {
-      for (let seller in price) {
-        if (seller != "error") {
-          this.dataAverage.labels.push(seller.split("_").join(" "));
-          this.dataAverage.datasets[0].data.push(price[seller]);
+      for (let i = 0; i < price.length; i++) {
+        for (let seller in price[i]) {
+          this.dataAverage.labels.push(seller);
+          this.dataAverage.datasets[0].data.push(price[i][seller]);
         }
       }
       this.averageChart();

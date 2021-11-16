@@ -1,6 +1,6 @@
 <template>
   <div class="visualisation best-visualisation">
-    <h2 class="visu-title">Nombre de sneakers par vendeur :</h2>
+    <h2 class="visu-title best-title">Nombre de sneakers par vendeur :</h2>
     <canvas ref="bestseller" id="best-chart" class="best-chart"></canvas>
   </div>
 </template>
@@ -25,7 +25,7 @@ export default {
               },
               ticks: {
                 beginAtZero: true,
-                max: 2000
+                max: 1600
               }
             }
           ],
@@ -37,7 +37,7 @@ export default {
               },
               ticks: {
                 beginAtZero: true,
-                max: 1500
+                max: 1200
               }
             }
           ]
@@ -48,7 +48,7 @@ export default {
               let index = tooltipItem["datasetIndex"];
               let datasets = data["datasets"][index]["data"];
               console.log(datasets[0]["r"]);
-              return "prix : " + (datasets[0]["r"] * 2) + "€";
+              return "prix moyen : " + (datasets[0]["r"] * 2) + "€";
             }
           }
         }
@@ -104,5 +104,9 @@ export default {
 <style>
 .best-visualisation {
   width: 100% !important;
+}
+
+.best-title {
+  text-align: center !important;
 }
 </style>
