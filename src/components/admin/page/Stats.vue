@@ -6,6 +6,7 @@
       <MostSellerAppear/>
       <NumberSneakerBySeller/>
       <PriceAverage/>
+      <BestSeller/>
     </div>
   </div>
 </template>
@@ -15,13 +16,15 @@ import NumberSneaker from "./visualization/NumberSneaker";
 import MostSellerAppear from "./visualization/MostSellerAppear";
 import NumberSneakerBySeller from "./visualization/NumberSneakerBySeller";
 import PriceAverage from "./visualization/PriceAverage";
+import BestSeller from "./visualization/BestSeller";
 
 export default {
   components: {
     NumberSneaker,
     MostSellerAppear,
+    NumberSneakerBySeller,
     PriceAverage,
-    NumberSneakerBySeller
+    BestSeller
   }
 }
 </script>
