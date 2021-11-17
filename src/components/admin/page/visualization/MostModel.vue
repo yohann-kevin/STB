@@ -16,13 +16,7 @@ export default {
         datasets: [{
           label: "Marque les plus recherchés sur stb",
           data: [],
-          backgroundColor: [
-            "rgba(233, 37, 47, 0.6)",
-            "rgba(253, 224, 0, 0.6)",
-            "rgba(0, 0, 0, 0.6)",
-            "rgba(58, 87, 144, 0.6)"
-          
-          ],
+          backgroundColor: [],
           barPercentage: 0.5
         }]
       },
@@ -58,8 +52,12 @@ export default {
       for (let model in models) {
         this.dataMostModel.labels.push(model);
         this.dataMostModel.datasets[0].data.push(models[model]);
+        this.dataMostModel.datasets[0].backgroundColor.push(this.generateRandomColor());
       }
       this.mostModelChart();
+    },
+    generateRandomColor: function() {
+      return "#" + ((1<<24)*Math.random() | 0).toString(16);
     },
     mostModelChart: function() {
       let ctx = this.$refs.mostModelChart;
