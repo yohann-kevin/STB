@@ -25,7 +25,7 @@ export default {
               },
               ticks: {
                 beginAtZero: true,
-                max: 1600
+                max: 1500
               }
             }
           ],
@@ -37,7 +37,7 @@ export default {
               },
               ticks: {
                 beginAtZero: true,
-                max: 1200
+                max: 1500
               }
             }
           ]
@@ -59,6 +59,7 @@ export default {
     findBestSeller: function() {
       this.$axios.get(process.env.VUE_APP_API_LINK + "sneakers/best/seller").then(response => {
         this.bestSeller = response.data;
+        console.log(this.bestSeller);
         this.manageBestSeller();
       });
     },
