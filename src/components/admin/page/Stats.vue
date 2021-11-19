@@ -9,6 +9,7 @@
       <BestSeller/>
       <MostModel/>
       <NumberFailedJob/>
+      <PriceRange/>
     </div>
   </div>
 </template>
@@ -21,6 +22,7 @@ import PriceAverage from "./visualization/PriceAverage";
 import BestSeller from "./visualization/BestSeller";
 import MostModel from "./visualization/MostModel";
 import NumberFailedJob from "./visualization/NumberFailedJob";
+import PriceRange from "./visualization/PriceRange";
 
 export default {
   components: {
@@ -30,7 +32,8 @@ export default {
     PriceAverage,
     BestSeller,
     MostModel,
-    NumberFailedJob
+    NumberFailedJob,
+    PriceRange
   }
 }
 </script>
