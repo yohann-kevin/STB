@@ -1,6 +1,6 @@
 <template>
-  <div class="visualisation most-model-visualisation">
-    <h2 class="visu-title most-model-title">Marque les plus recherchés :</h2>
+  <div class="visualisation">
+    <h2 class="visu-title">Marque les plus recherchés :</h2>
     <canvas ref="mostModelChart" id="most-model-chart" class="most-model-chart"></canvas>
   </div>
 </template>
@@ -77,11 +77,5 @@ export default {
 </script>
 
 <style>
-.most-model-visualisation {
-  width: 100% !important;
-}
 
-.most-model-title {
-  text-align: center !important;
-}
 </style>

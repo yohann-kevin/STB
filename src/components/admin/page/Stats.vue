@@ -8,6 +8,7 @@
       <PriceAverage/>
       <BestSeller/>
       <MostModel/>
+      <NumberFailedJob/>
     </div>
   </div>
 </template>
@@ -19,6 +20,7 @@ import NumberSneakerBySeller from "./visualization/NumberSneakerBySeller";
 import PriceAverage from "./visualization/PriceAverage";
 import BestSeller from "./visualization/BestSeller";
 import MostModel from "./visualization/MostModel";
+import NumberFailedJob from "./visualization/NumberFailedJob";
 
 export default {
   components: {
@@ -27,7 +29,8 @@ export default {
     NumberSneakerBySeller,
     PriceAverage,
     BestSeller,
-    MostModel
+    MostModel,
+    NumberFailedJob
   }
 }
 </script>
@@ -63,11 +66,6 @@ export default {
   margin: 10px;
   transition: 0.5s;
 }
-
-/* .visualisation:hover {
-  transform: scale(1.1);
-  cursor: pointer;
-} */
 
 .visu-title {
   padding: 10px;
