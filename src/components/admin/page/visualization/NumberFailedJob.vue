@@ -1,68 +1,82 @@
 <template>
   <div class="visualisation">
-    <h2 class="visu-title">Nombre de sneakers par vendeur :</h2>
-    <canvas ref="numberchart" id="number-chart" class="number-chart"></canvas>
+    <h2 class="visu-title">Error with scrapy :</h2>
+    <canvas ref="planetchart" id="planet-chart" class="planet-chart"></canvas>
   </div>
 </template>
 
 <script>
 import Chart from "chart.js";
+import moment from 'moment';
 
 export default {
   data() {
-    return {
-      numberSneakerSeller: null,
-      dataNumberSneaker: {
-        labels: [],
-        datasets: [{
-          label: "WIP wit fake data",
-          data: [],
-          backgroundColor: [
-              "rgba(233, 37, 47, 0.6)",
-              "rgba(253, 224, 0, 0.6)",
-              "rgba(0, 0, 0, 0.6)",
-              "rgba(58, 87, 144, 0.6)"
-          ]
-        }]
+    return  {
+      failedJobCount: null,
+      nbFailedJob: {
+        datasets: [
+          {
+            label: "Error with scrappy",
+            fill: false,
+            borderColor: "red",
+            borderWidth: 3
+          }
+        ]
       },
-      optionsNumberSneaker: {
+      optionsFailedJob: {
         responsive: true,
-        legend: {
-          position: 'right'
-        },
+        lineTension: 2,
+        scales: {
+          yAxes: [
+            {
+              ticks: {
+                beginAtZero: true,
+                padding: 25
+              }
+            }
+          ]
+        }
       }
     }
   },
   methods: {
-    findCountSneakerBySeller: function() {
-      this.$axios.get(process.env.VUE_APP_API_LINK + "sneakers/count/seller").then(response => {
-        this.numberSneakerSeller = response.data;
-        this.manageSneakerCount();
+    findfailedJob: function() {
+      this.$axios.get(process.env.VUE_APP_API_LINK + "/jobs/last/week").then(response => {
+        this.failedJobCount = response.data;
+        this.initData();
       });
     },
-    manageSneakerCount: function() {
-      for (let i = 0;i < this.numberSneakerSeller.length; i++) {
-        for (let seller in this.numberSneakerSeller[i]) {
-          this.dataNumberSneaker.labels.push(seller);
-          this.dataNumberSneaker.datasets[0].data.push(this.numberSneakerSeller[i][seller]);
+    initData: function() {
+      this.initChart();
+      for (let i = 0; i < this.failedJobCount.length; i++) {
+        for (let date in this.failedJobCount[i]) {
+          this.nbFailedJob.datasets[0].data.push(this.failedJobCount[i][date]);
+          this.nbFailedJob.labels.push(this.manageDate(date));
         }
       }
-      this.numberSellerChart();
+      this.nbFailedJobChart();
     },
-    numberSellerChart: function() {
-      let ctx = this.$refs.numberchart;
-      let data = this.dataNumberSneaker;
-      let options = this.optionsNumberSneaker;
+    initChart: function() {
+      this.nbFailedJob.datasets[0].data = [];
+      this.nbFailedJob.labels = [];
+    },
+    manageDate: function(date) {
+      return moment(date).locale("fr").fromNow();
+    },
+    nbFailedJobChart: function() {
+      let ctx = this.$refs.planetchart;
+      let data = this.nbFailedJob;
+      let options = this.optionsFailedJob;
       new Chart(ctx, {
-        type: 'doughnut',
+        type: 'line',
         data,
         options
       });
     }
   },
   mounted() {
-    this.findCountSneakerBySeller();
-  }
+    this.findfailedJob();
+  },
 }
 </script>
 
